@@ -21,10 +21,10 @@ $sql = "SELECT * FROM `advisor_info` WHERE `username` = '$user' AND `lname` = '$
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
 if($row)
-  {
-    $_SESSION['advisorExists'] = true;
-    header('Location: advisorInfo.php');
-  }
+{
+	$_SESSION['advisorExists'] = true;
+	header('Location: advisorInfo.php');
+}
 else
   {
 
