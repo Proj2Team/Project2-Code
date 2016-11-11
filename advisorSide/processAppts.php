@@ -1,7 +1,7 @@
 <?php
 session_start();
 var_dump($_POST);
-include('../../../CommonMethods.php');
+include('../studentSide/CommonMethods.php');
 
 $debug = true;
 $COMMON = new Common($debug);
@@ -53,9 +53,9 @@ if(isset($apptTimes))
 	$index++;
 	$query .= ", $max, '$loc'";
       }
-    
+
     $query .= ')';
-    
+
     echo $query;
   }
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 #var_dump($_POST);
-include('../../../CommonMethods.php');
+include('../studentSide/CommonMethods.php');
 
 $debug = true;
 $COMMON = new Common($debug);
@@ -49,7 +49,7 @@ else
 
 # Array for possible selections of majors the advisor could advise
 	$cols = array('bsci_BA', 'bsci_BS', 'bchem_BS', 'binf_BS', 'bsciEd_BA', 'chem_BA', 'chem_BS', 'chemEd_BA');
-    
+
 # Start of the query to insert selected majors into the advisors_majors table
 	$query = "INSERT INTO `advisors_majors`(`id`, `bsci_BA`, `bsci_BS`, `bchem_BS`, `binf_BS`, `bsciEd_BA`, `chem_BA`, `chem_BS`, `chemEd_BA`)" . " VALUES ($id";
 

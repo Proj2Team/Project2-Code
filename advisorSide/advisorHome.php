@@ -2,7 +2,7 @@
 <?php
 session_start();
 $debug = false;
-include('../../../CommonMethods.php');
+include('../studentSide/CommonMethods.php');
 
 $COMMON = new Common($debug);
 $_SESSION['confirmedPass'] = false;

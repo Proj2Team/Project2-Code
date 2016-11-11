@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../../CommonMethods.php');
+include('../studentSide/CommonMethods.php');
 $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 

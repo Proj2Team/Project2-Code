@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../../CommonMethods.php');
+include('../studentSide/CommonMethods.php');
 
 $debug = false;
 $COMMON = new Common($debug);
