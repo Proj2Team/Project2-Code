@@ -21,14 +21,21 @@ if($_SESSION['studentExists'] == true)
 
 <form action='setStudent.php' method='post'>
 
-  First Name: <input type='varchar' size='25' maxlength='40' name='fname' required><br/><br/>
-  Last Name: <input type='varchar' size='25' maxlength='40' name='lname' required><br/><br/>
-  Student ID: <input type='varchar' size='7' maxlength='10' name='umbc_ID' required><br/><br/>
-  Email: <input type='email'name='email' required><br/><br/>
-  Password: <input type='password' name='password' required><br/><br/>
-  Re-enter Password: <input type='password' name='confirmPass' required><br/><br/> 
+  *First Name: <input type='varchar' size='25' maxlength='40' name='fname' required><p>
 
-  Select Major(s):<br/>
+  Preferred Name: <input type='varchar' size='25' maxlength='40' name='pname' placeholder = 'eg. A nickname' ><p>
+
+  *Last Name: <input type='varchar' size='25' maxlength='40' name='lname' required><p>
+
+  *Student ID: <input type='varchar' size='7' maxlength='10' min = 7 max = 7 name='umbc_ID' placeholder = 'XZ12345' required><p>
+
+  *Email: <input type='email' name='email' placeholder = 'jDoe@umbc.edu' required><p>
+
+  *Password: <input type='password' name='password' required><p>
+
+  *Re-enter Password: <input type='password' name='confirmPass' required><p> 
+
+  *Select Major(s):<br/>
   <select name='majors[]' multiple='multiple'>
   <option value='bio_ba'>Biological Sciences BA</option>
   <option value='bio_bs'>Biological Sciences BS</option>
@@ -41,7 +48,9 @@ if($_SESSION['studentExists'] == true)
   </select><br/><br/>
 
 
-  <input type='submit' value='Register'>
+  <input type='submit' value='Register'> <p>
+
+<sub> *Required field</sub>
 
 
 </form>
