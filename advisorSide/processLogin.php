@@ -19,24 +19,21 @@ $sql = "SELECT * FROM `advisor_info` WHERE `username` = '$user' AND `password` =
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
 
-if($row)
-  {
-    $advisorID = $row['0'];
-    $last = $row['3'];
-    $first = $row['4'];
-    $office = $row['5'];
-    $email = $row['6'];
-    $_SESSION['advisorID'] = $advisorID;
-    $_SESSION['last'] = $last;
-    $_SESSION['first'] = $first;
-    $_SESSION['office'] = $office;
-    $_SESSION['email'] = $email;
-    header('Location: advisorHome.php');
-  }
-else
-  {
-    $_SESSION['userValue'] = true;
-    header('Location: login.php');
-  }
+if ($row) {
+  $advisorID = $row['0'];
+  $last = $row['3'];
+  $first = $row['4'];
+  $office = $row['5'];
+  $email = $row['6'];
+  $_SESSION['advisorID'] = $advisorID;
+  $_SESSION['last'] = $last;
+  $_SESSION['first'] = $first;
+  $_SESSION['office'] = $office;
+  $_SESSION['email'] = $email;
+  header('Location: advisorHome.php');
+} else {
+  $_SESSION['userValue'] = true;
+  header('Location: login.php');
+}
 
 ?>

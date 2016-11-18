@@ -17,8 +17,7 @@ $id = $row['0'];
 $advisorID = $_SESSION['advisorID'];
 #echo("Advisor ID: ".$advisorID." just id: ".$id."<br/>");
 
-function getApptTimes($id, $date)
-{
+function getApptTimes($id, $date) {
   global $debug; global $COMMON;
   $times = array('8:00 AM', '8:30 AM', '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM');
 
@@ -29,7 +28,6 @@ function getApptTimes($id, $date)
   $rsLoc = $COMMON->executeQuery($sqlLoc, $_SERVER["SCRIPT_NAME"]);
   $rowLoc = mysql_fetch_row($rsLoc);
 
-
 # get number of students that signed up for this date this time this advisor
 # compute available openings
 #  $sql = "SELECT * FROM `student_appts` WHERE `advisor_ID` = '$advisorID' AND `date` = '$date'";
@@ -39,30 +37,24 @@ function getApptTimes($id, $date)
 
 # get student id that signed up for this advisor on this date -- save in array for multiples
 
-
-
   echo("<table border='1px' style='width:35%'>");
   echo("<tr><th>Time</th><th>Type</th><th>Location</th></tr>");
   $index = 0;
-  while($row = mysql_fetch_row($rs))
-    {
-
-      foreach ($row as $element)
-	{
-          echo("<tr>");
-	  if($element == 0) { $availability = "Not available";}
-	  elseif($element == 1) {$availability = "Individual available";}
-	  elseif($element >= 1) {$availability = "Group available";}
-	  $location = $rowLoc[$index];
-	  #if($location == 0) {$location = "";}
-	  echo("<td>".$times[$index]."</td>");
-	  echo ("<td>".$availability."</td>");
-	  echo ("<td>".$location."</td>");
-	  $index++;
-          echo("</tr>");
-	}
-
+  while( $row = mysql_fetch_row($rs) ) {
+      foreach ($row as $element) {
+        echo("<tr>");
+    	  if ($element == 0) { $availability = "Not available";}
+    	  elseif ($element == 1) {$availability = "Individual available";}
+    	  elseif ($element >= 1) {$availability = "Group available";}
+    	  $location = $rowLoc[$index];
+    	  #if($location == 0) {$location = "";}
+    	  echo("<td>".$times[$index]."</td>");
+    	  echo ("<td>".$availability."</td>");
+    	  echo ("<td>".$location."</td>");
+    	  $index++;
+        echo("</tr>");
     }
+  }
   return $row;
 }
 
@@ -71,38 +63,37 @@ getApptTimes($id, $date);
 ?>
 
 <html>
-<head>
-<title>Edit Appointments</title>
-<style>
-table, th, td {
-border: 1px solid gray;
-border-collapse: collapse;
-font-family:helvetica;
-}
+  <head>
+    <title>Edit Appointments</title>
+    <style>
+      table, th, td {
+        border: 1px solid gray;
+        border-collapse: collapse;
+        font-family: helvetica;
+      }
 
-th, td {
-padding: 10px;
-text-align: left;
-}
+      th, td {
+        padding: 10px;
+        text-align: left;
+      }
 
-tr:nth-child(even) {
-background-color:#eee;
-}
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
 
-tr:nth-child(odd) {
-background-color:#fff;
-}
+      tr:nth-child(odd) {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <form action='processViewAppts.php' method='post'>
+      <caption><label for='viewDate'>Appointment Date: </label><input id='viewDate' type='date' name='viewDate' value='<?php echo $date; ?>' min='<?php echo $today; ?>'></caption>
+      <input type='submit' value='Search'>
+    </form>
 
-</style>
-</head>
-<body>
-<form action='processViewAppts.php' method='post'>
-<caption><label for='viewDate'>Appointment Date: </label><input id='viewDate' type='date' name='viewDate' value='<?php echo $date; ?>' min='<?php echo $today; ?>'></caption>
-<input type='submit' value='Search'>
-</form>
-
-<form action='advisorHome.php' method='post'>
-<input type='submit' value='Home'>
-</form>
-</body>
+    <form action='advisorHome.php' method='post'>
+      <input type='submit' value='Home'>
+    </form>
+  </body>
 </html>

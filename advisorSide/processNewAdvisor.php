@@ -19,20 +19,14 @@ $sql = "SELECT * FROM `advisor_info` WHERE `username` = '$_POST[username]' AND `
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
 
-if($_POST['pass'] == $_POST['confirmPass'])
-  {
-    header('Location: createAdvisor.php');
-  }
-elseif($_POST['pass'] != $_POST['confirmPass'])
-  {
-    $_SESSION['confirmedPass'] = true;
-    header('Location: advisorInfo.php');
-  }
-elseif($row)
-  {
-    $_SESSION['advisorExists'] = true;
-    header('Location: advisorInfo.php');
-  }
-
+if ($_POST['pass'] == $_POST['confirmPass']) {
+  header('Location: createAdvisor.php');
+} elseif ($_POST['pass'] != $_POST['confirmPass']) {
+  $_SESSION['confirmedPass'] = true;
+  header('Location: advisorInfo.php');
+} elseif ($row) {
+  $_SESSION['advisorExists'] = true;
+  header('Location: advisorInfo.php');
+}
 
 ?>
