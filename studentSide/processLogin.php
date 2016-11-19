@@ -16,16 +16,20 @@ $sql = "SELECT * FROM `students_basic_info` WHERE `umbc_ID` = '$umbc_ID' AND `pa
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
 
+//EDITS BY KHADIJAH: changed the data gathered from database to accomadate for new data fields
+//i.e. preferred name and inadvertantly switching the order of email and umbc_ID
 if($row)
   {
     $studentID = $row['0'];
     $last = $row['1'];
     $first = $row['2'];
-    $umbc_ID = $row['3'];
+    $pref =  $row['3'];
     $email = $row['4'];
+    $umbc_ID = $row['5'];
     $_SESSION['studentID'] = $studentID;
     $_SESSION['last'] = $last;
     $_SESSION['first'] = $first;
+    $_SESSION['pref'] = $pref;
     $_SESSION['umbc_ID'] = $umbc_ID;
     $_SESSION['email'] = $email;
     header('Location: homescreen.php');

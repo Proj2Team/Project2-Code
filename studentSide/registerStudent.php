@@ -19,23 +19,25 @@ if($_SESSION['studentExists'] == true)
   }
 ?>
 
+<!-- CHANGES BY KHADIJAH: neatened up formatting and added preferred name (following description) -->
+
 <form action='setStudent.php' method='post'>
 
-  *First Name: <input type='varchar' size='25' maxlength='40' name='fname' required><p>
+  *First Name:<br> <input type='varchar' size='25' maxlength='40' name='fname' required><p>
 
-  Preferred Name: <input type='varchar' size='25' maxlength='40' name='pname' placeholder = 'eg. A nickname' ><p>
+  Preferred Name:<br> <input type='varchar' size='25' maxlength='40' name='pname' placeholder = 'eg. A nickname' ><p>
 
-  *Last Name: <input type='varchar' size='25' maxlength='40' name='lname' required><p>
+  *Last Name:<br> <input type='varchar' size='25' maxlength='40' name='lname' required><p>
 
-  *Student ID: <input type='varchar' size='7' maxlength='10' min = 7 max = 7 name='umbc_ID' placeholder = 'XZ12345' required><p>
+  *Student ID:<br> <input type='varchar' size='7' maxlength='10' min=7 max=7 name='umbc_ID' placeholder = 'XZ12345' required><p>
 
-  *Email: <input type='email' name='email' placeholder = 'jDoe@umbc.edu' required><p>
+  *Email:<br> <input type='email' name='email' placeholder = 'jDoe@umbc.edu' required><p>
 
-  *Password: <input type='password' name='password' required><p>
+  *Password: <br><input type='password' name='password' required><p>
 
-  *Re-enter Password: <input type='password' name='confirmPass' required><p> 
+  *Re-enter Password:<br> <input type='password' name='confirmPass' required><p> 
 
-  *Select Major(s):<br/>
+  *Select Major(s):<br>
   <select name='majors[]' multiple='multiple'>
   <option value='bio_ba'>Biological Sciences BA</option>
   <option value='bio_bs'>Biological Sciences BS</option>
@@ -45,15 +47,24 @@ if($_SESSION['studentExists'] == true)
   <option value='chem_ba'>Chemistry BA</option>
   <option value='chem_bs'>Chemistry BS</option>
   <option value='chemedu_ba'>Chemistry Education BA</option>
-  </select><br/><br/>
+  </select><p>
 
 
   <input type='submit' value='Register'> <p>
 
+</form>
+
+<!-- EDITS BY KHADIJAH: added *s for required fields and added small note-->
+<!-- Also added a link back to log in in case register was clicked by accident-->
+
+<form action='newLogin.php' method='post' name='registerStudent'>
+    <input type='submit' value='Back to Log in'>
+</form><p>
+
 <sub> *Required field</sub>
 
 
-</form>
+
 
 </body>
 </html>

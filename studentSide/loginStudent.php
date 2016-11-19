@@ -16,10 +16,12 @@ if($_SESSION['userValue'] == true)
 $_SESSION['confirmedPass'] = false;
 $_SESSION['studentExists'] = false;
 ?>
+<!-- EDITS BY KHADIJAH: neatened up format and changed from email to umbc ID because -->
+<!-- the query in processLogin.php was asking for umbc ID in the first place...--> 
 
 <form action='processLogin.php' method='post' name='studentLogin'>
-  Email: <input type='email' name='email' required><br/><br/>
-  Password: <input type='password' name='password' required><br/><br/>
+  UMBC ID:<br> <input type='text' name='umbc_ID' placeholder='XZ12345' required><p>
+  Password:<br> <input type='password' name='password' required><p>
   <input type='submit' value='Login'>
 </form>
 

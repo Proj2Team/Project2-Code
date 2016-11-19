@@ -5,9 +5,11 @@ $debug = false;
 include('CommonMethods.php');
 $COMMON = new Common($debug);
 
+//EDIT BY KHADIJAH: just added so it also includes preferred name
 
 $_SESSION['newLast'] = $_POST['lname'];
 $_SESSION['newFirst'] = $_POST['fname'];
+$_SESSION['newPref'] = $_POST['pname'];
 $_SESSION['newUmbcID'] = $_POST['umbc_ID'];
 $_SESSION['newPass'] = $_POST['password'];
 $_SESSION['confirmedPass'] = false;
@@ -34,8 +36,6 @@ elseif($row)
     $_SESSION['studentExists'] = true;
     header('Location: registerStudent.php');
   }
-
-
 
 
 ?>
