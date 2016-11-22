@@ -7,12 +7,24 @@ $debug = true;
 $COMMON = new Common($debug);
 
 $date = $_POST['selectedDate'];
-$apptTimes = $_POST['apptTimes'];
+//$apptTimes = $_POST['apptTimes'];
+$start_time = $_POST['start_time'];
+$end_time = $_POST['end_time'];
 $numStudents = $_POST['numStudents'];
-$locations = $_POST['locations'];
+$location = $_POST['location'];
+$session_type = $_POST['session_type'];
+
+if ($session_type == "Group") {
+  $session_type = 0;
+} else {
+  $session_type = 1;
+}
+
+$session_leader = $_POST['session_leader'];
+//$locations = $_POST['locations'];
 $email = $_SESSION['email'];
 
-if ( isset($apptTimes) ) {
+if ( isset($session_type) && isset($start_time) && isset($end_time) ) {
     # Query to get the id number of the advisor based on matching email
     $sql = "SELECT `id` FROM `advisor_info` WHERE `email` = '$email'";
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
@@ -22,33 +34,17 @@ if ( isset($apptTimes) ) {
     $id = $row['0'];
 
     # Query to see if day/advisor is already in database
-    $sql = "SELECT * FROM `advisor_appts` WHERE `id` = '$id' AND `date` = '$date'";
+    $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$id' AND `date` = '$date'";
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
     $appt = mysql_fetch_row($rs);
 
-    if ($appt) {
+    if ($appt) { // TODO
     	$_SESSION['apptExists'] = true;
     	$_SESSION['updateDate'] = $date;
     	header('Location: updateAppts.php');
     }
 
-    $timeCols = array('0800', '0830', '0900', '0930', '1000', '1030', '1100', '1130', '1200', '1230', '1300', '1330', '1400', '1430', '1500', '1530', '1600', '1630');
-    $query = "INSERT INTO `advisor_appts`(`m_id`, `id`, `date`, `0800`, `0800_loc`, `0830`, `0830_loc`, `0900`, `0900_loc`, `0930`, `0930_loc`, `1000`, `1000_loc`, `1030`, `1030_loc`, `1100`, `1100_loc`, `1130`, `1130_loc`, `1200`, `1200_loc`, `1230`, `1230_loc`, `1300`, `1300_loc`, `1330`, `1330_loc`, `1400`, `1400_loc`, `1430`, `1430_loc`, `1500`, `1500_loc`, `1530`, `1530_loc`, `1600`, `1600_loc`, `1630`, `1630_loc`)" . " VALUES ('', '$id', '$date'";
-    $index = 0;
-
-    foreach ($timeCols as $timeCol) {
-    	if ( in_array($timeCol, $apptTimes) ) {
-        $max = $numStudents[$index];
-        $loc = $locations[$index];
-    	} else {
-        $max = 0;
-        $loc = 0;
-    	}
-    	$index++;
-    	$query .= ", $max, '$loc'";
-    }
-
-    $query .= ')';
+    $query = "INSERT INTO `advisor_appts`(`m_id`, `a_id`, `date`, `start_time`, `end_time`, `num_students`, `location`, `session_type`, `session_leader`) VALUES ('', '$id', '$date', '$start_time', '$end_time', '$numStudents', '$location', '$session_type', '$session_leader')";
 
     echo $query;
 }
