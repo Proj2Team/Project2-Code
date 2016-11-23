@@ -78,14 +78,19 @@ else {
 
 
 # Set up update query to change info in the student basic info table
-    $sql = "UPDATE `students_basic_info` SET `lname`= '$last',`fname`='$first',`pname`='$pref',";
+    $sql = "UPDATE `students_basic_info` SET `lname`= '$last',`fname`='$first',`pname`='$pref'";
 
 //only change password if there is a new one
     if($newPass != ''){
-    $sql .=  "`password`='$encrypted_newPass',";
+    $sql .=  ",`password`='$encrypted_newPass'";
 	}
-    echo($_SESSION['umbc_ID']);
-    $sql .= "`bio_ba`=$values[0],`bio_bs`=$values[1],`biochem_bs`=$values[2],`bioinfo_bs`=$values[3],`bioedu_ba`=$values[4],`chem_ba`=$values[5],`chem_bs`=$values[6],`chemedu_ba`=$values[7] WHERE `umbc_ID`='$_SESSION[umbc_ID]'";
+    
+//only change major if it was selected
+    if(isset($majors)){
+    $sql .= ",`bio_ba`=$values[0],`bio_bs`=$values[1],`biochem_bs`=$values[2],`bioinfo_bs`=$values[3],`bioedu_ba`=$values[4],`chem_ba`=$values[5],`chem_bs`=$values[6],`chemedu_ba`=$values[7]";
+	}
+
+    $sql .= " WHERE `umbc_ID`='$_SESSION[umbc_ID]'";
 
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
@@ -93,6 +98,10 @@ else {
     $_SESSION['first'] = $first;
     $_SESSION['last'] = $last;
     $_SESSION['pref'] = $pref;
+
+   if($newPass != ''){
+    	$_SESSION['password'] = $newPass;
+	}
 
     header('Location: homescreen.php');
   }

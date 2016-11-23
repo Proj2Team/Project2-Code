@@ -32,7 +32,7 @@ if($_SESSION['confirmedNewPass'] == true)
 
 <form action='editStudent.php' method='post'>
 
-  First Name:<br> <input type='varchar' size='25' maxlength='40' name='fname' value='
+  *First Name:<br> <input type='varchar' size='25' maxlength='40' name='fname' value='
 <?php
 	echo($_SESSION['first']);
 ?>
@@ -44,23 +44,23 @@ if($_SESSION['confirmedNewPass'] == true)
 ?>
 ' ><p>
 
-  Last Name:<br> <input type='varchar' size='25' maxlength='40' name='lname' value='
+  *Last Name:<br> <input type='varchar' size='25' maxlength='40' name='lname' value='
 <?php
 	echo($_SESSION['last']);
 ?>
 ' required><p>
 
-  Password: <br><input type='password' name='password' required><p>
+  *Password: <br><input type='password' name='password' required><p>
 
-  Re-enter Password:<br> <input type='password' name='confirmPass' required><p> 
+  *Re-enter Password:<br> <input type='password' name='confirmPass' required><p> 
 
   New Password: <br><input type='password' name='newPass'> <sub> Optional </sub> <p>
 
   Re-enter New Password: <br><input type='password' name='confirmNewPass'><p>
 
 
-  Select Major(s):<br>
-  <select name='majors[]' multiple='multiple' required>
+  *Select Major(s):<br>
+  <select name='majors[]' multiple='multiple'>
   <option value='bio_ba'>Biological Sciences BA</option>
   <option value='bio_bs'>Biological Sciences BS</option>
   <option value='biochem_bs'>Biochemistry & Molecular Biology BS</option>
@@ -70,6 +70,7 @@ if($_SESSION['confirmedNewPass'] == true)
   <option value='chem_bs'>Chemistry BS</option>
   <option value='chemedu_ba'>Chemistry Education BA</option>
   </select><p>
+
 
 
   <input type='submit' value='Apply Changes'> <p>
@@ -82,6 +83,8 @@ if($_SESSION['confirmedNewPass'] == true)
 <form action='homescreen.php' method='post' name='editStudent'>
     <input type='submit' value='Back to Home'>
 </form><p>
+
+<sub> *Required field</sub><br>
 
 </body>
 </html>
