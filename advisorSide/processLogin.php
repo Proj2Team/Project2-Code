@@ -17,14 +17,14 @@ $encrypted_pass = md5($pass);
 
 $sql = "SELECT * FROM `advisor_info` WHERE `username` = '$user' AND `password` = '$encrypted_pass'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-$row = mysql_fetch_row($rs);
+$row = mysql_fetch_assoc($rs);
 
 if ($row) {
-  $advisorID = $row['0'];
-  $last = $row['3'];
-  $first = $row['4'];
-  $office = $row['5'];
-  $email = $row['6'];
+  $advisorID = $row['id'];
+  $last = $row['lname'];
+  $first = $row['fname'];
+  $office = $row['office'];
+  $email = $row['email'];
   $_SESSION['advisorID'] = $advisorID;
   $_SESSION['last'] = $last;
   $_SESSION['first'] = $first;
