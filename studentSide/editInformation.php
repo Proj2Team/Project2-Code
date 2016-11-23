@@ -59,7 +59,7 @@ if($_SESSION['confirmedNewPass'] == true)
   Re-enter New Password: <br><input type='password' name='confirmNewPass'><p>
 
 
-  *Select Major(s):<br>
+  Change Major(s):<br>
   <select name='majors[]' multiple='multiple'>
   <option value='bio_ba'>Biological Sciences BA</option>
   <option value='bio_bs'>Biological Sciences BS</option>
