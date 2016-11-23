@@ -4,6 +4,7 @@ session_start();
 
 <html>
 <head>
+<title>Student Homepage</title>
 
 <!-- EDITS BY KHADIJAH: edit so it prints out the student's name as a header. It will print out-->
 <!-- preferred name if they have one, but if not it prints out their first name -->

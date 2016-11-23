@@ -5,25 +5,41 @@ include('CommonMethods.php');
 $debug = true;
 $COMMON = new Common($debug);
 
-$first = $_SESSION['newFirst'];
-$last = $_SESSION['newLast'];
-$pref = $_SESSION['newPref'];
-$umbc_ID = $_SESSION['newUmbcID'];
-$pass = $_SESSION['newPass'];
+$first = $_POST['fname'];
+$last = $_POST['lname'];
+$pref = $_POST['pname'];
+$umbc_ID = $_POST['umbc_ID'];
+$pass = $_POST['password'];
 $encrypted_pass = md5($pass);
-$email = $_SESSION['email'];
-$majors = $_SESSION['majors'];
+$email = $_POST['email'];
+$majors = $_POST['majors'];
 $_SESSION['studentExists'] = false;
+$_SESSION['confirmedPass'] = false;
+$_SESSION['confirmedNewPass'] = false;
+$_SESSION['umbcEmail'] = false;
+
 
 # Check to see if student already exists
-$sql = "SELECT * FROM `students_basic_info` WHERE `umbc_ID` = '$umbc_ID' AND `lname` = '$last' AND `fname` = '$first' AND `pname` = '$pref'";
+$sql = "SELECT * FROM `students_basic_info` WHERE `umbc_ID` = '$umbc_ID' AND `lname` = '$last' AND `fname` = '$first'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
+
+//EDIT BY KHADIJAH: createStudent now checks for both the student existing and the passwords
+//matching instead of setStudent doing so separately. It also checks if the email is a umbc email
 if($row)
   {
     $_SESSION['studentExists'] = true;
     header('Location: registerStudent.php');
   }
+elseif($_POST['password'] != $_POST['confirmPass'])
+  {
+    $_SESSION['confirmedPass'] = true;
+    header('Location: registerStudent.php');
+  }
+elseif(substr_compare($email, '@umbc.edu', -9, 9) != 0){
+    $_SESSION['umbcEmail'] = true;
+    header('Location: registerStudent.php');
+}
 else
   {
 
@@ -55,7 +71,14 @@ else
       }
 
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-    $_SESSION['umbc_ID'] = $_SESSION['newUmbcID'];
+
+//CHANGES BY KHADIJAH: createStudent now adds more than just the umbc_ID to the session
+    $_SESSION['last'] = $last;
+    $_SESSION['first'] = $first;
+    $_SESSION['pref'] = $pref;
+    $_SESSION['umbc_ID'] = $umbc_ID;
+    $_SESSION['email'] = $email;
+    $_SESSION['password'] = $pass;
     header('Location: homescreen.php');
   }
 ?>

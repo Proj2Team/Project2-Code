@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
 <head>
-<title></title>
+<title>Student: Log in</title>
 </head>
 <body>
 
@@ -14,7 +14,9 @@ if($_SESSION['userValue'] == true)
   }
 
 $_SESSION['confirmedPass'] = false;
+$_SESSION['confirmedNewPass'] = false;
 $_SESSION['studentExists'] = false;
+$_SESSION['confirmedNewPass'] = false;
 ?>
 <!-- EDITS BY KHADIJAH: neatened up format and changed from email to umbc ID because -->
 <!-- the query in processLogin.php was asking for umbc ID in the first place...--> 

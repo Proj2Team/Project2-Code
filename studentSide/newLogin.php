@@ -4,13 +4,17 @@ session_start();
 
 <html>
 <head>
-<title></title>
+<title>Student: Log in</title>
 </head>
 <body>
 
 <?php
 $_SESSION['studentExists'] = false;
+$_SESSION['confirmedNewPass'] = false; 
+$_SESSION['confirmedOldPass'] = false; //some of these are used to prevent errors and are not actually used 
+					//until the student goes to certain pages. these are simply ALL the possible errors
 $_SESSION['confirmedPass'] = false;
+$_SESSION['umbcEmail'] = false;
 ?>
 
 <!-- EDITS BY KHADIJAH: neatened up format and changed from email to umbc ID because -->
