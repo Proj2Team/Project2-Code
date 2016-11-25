@@ -18,11 +18,11 @@ date_default_timezone_set('EST');
 	    <span>Number of Students Capacity (1-40): </span><input type="number" name="numStudents" min="1" max="40" value="1"><br/>
 	    <span>Location (Optional): </span><input type="text" name="location"><br/>
 	    <span>Session Type: </span><br/>
-	    <input type="radio" name="session_type" value="Group"> Group <br/>
+	    <input type="radio" name="session_type" value="Group" checked> Group <br/>
 	    <input type="radio" name="session_type" value="Individul"> Individual <br/>
 	    <span>Session Leader: </span><br/>
 	    <select name="session_leader">
-	      <option value="Michelle Bulger">Ms. Michelle Bulger</option>
+	      <option value="Michelle Bulger" selected>Ms. Michelle Bulger</option>
 	      <option value="Julie Crosby">Mrs. Julie Crosby</option>
 	      <option value="Christine Powers">Ms. Christine Powers</option>
 	      <option value="CNMS Advisors">CNMS Advisors</option>
