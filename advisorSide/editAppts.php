@@ -30,7 +30,7 @@ function getApptTimes($id, $date) {
 
   // get student id that signed up for this advisor on this date -- save in array for multiples
 
-  echo("<table border='1px' style='width:35%'>");
+  echo("<table border='1px'>");
   echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th></th></tr>");
   while ( $row = mysql_fetch_assoc($rs) ) {
     echo("<tr>\n");
@@ -43,9 +43,9 @@ function getApptTimes($id, $date) {
       echo("<td>".$row['num_students']."</td>\n");
       echo("<td>".$row['participants']."</td>\n");
       echo ("<td>".$row['location']."</td>\n");
-      echo "<td><form action='editMadeAppt.php' method='post' name='formEditMadeAppt'>\n";
+      echo "<td><form class='form-fill' action='editMadeAppt.php' method='post' name='formEditMadeAppt'>\n";
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
-      echo "<input type='submit' value='Edit'>\n";
+      echo "<input class='edit-button' type='submit' value='Edit'>\n";
       echo "</form></td>\n";
     echo("</tr>\n");
   }
@@ -56,16 +56,25 @@ function getApptTimes($id, $date) {
 <html>
   <head>
     <title>Edit Appointments</title>
+    <link rel="stylesheet" href="../styles.css" type="text/css">
     <style>
+      table {
+        width: 100%;
+      }
       table, th, td {
         border: 1px solid gray;
         border-collapse: collapse;
-        font-family:helvetica;
+        font-family: helvetica;
       }
 
       th, td {
         padding: 10px;
         text-align: left;
+      }
+
+      td {
+        position: relative;
+        min-width: 50px;
       }
 
       tr:nth-child(even) {
@@ -80,9 +89,9 @@ function getApptTimes($id, $date) {
   <body>
     <form action="createNewAppt.php" method="post" name="formCreateAppt">
       <input type="hidden" name="date" value="<?php echo $date; ?>">
-      <input type="submit" value="Create New Appointment">
+      <input class="button" type="submit" value="Create New Appointment">
     </form>
-    <span> Viewing Appointments for <?php echo date("l Y-m-d", strtotime($date)); ?></span>
+    <h3 class="medium-title">Viewing Appointments for <?php echo date("l Y-m-d", strtotime($date)); ?></h3>
     <?php getApptTimes($id, $date); ?>
   </body>
 </html>

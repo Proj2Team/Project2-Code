@@ -7,12 +7,13 @@ $today = date("Y-m-d"); ?>
 <html>
 <head>
 	<title>Pick Date</title>
+	<link rel="stylesheet" href="../styles.css" type="text/css">
 </head>
 <body>
 <form action='editAppts.php' method='post' name='formEdit'>
-    <label> Select a date you would like to view: </label><br/>
-    <input id='selectedDate' type='date' name='selectedDate' value='<?php echo $today; ?>'/><br/>
-    <input type='submit' value='Select Date'>
+    <h3 class="medium-title"> Select a date you would like to view: </h3>
+    <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $today; ?>'/><br/>
+    <input class="button" type='submit' value='Select Date'>
 </form>
 </body>
 </html>

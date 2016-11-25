@@ -4,6 +4,7 @@ session_start();
 <html>
   <head>
     <title>Edit Advisor Information</title>
+    <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
 

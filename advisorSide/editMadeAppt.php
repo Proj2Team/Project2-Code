@@ -22,13 +22,13 @@ $session_leader = $row['session_leader'];
 <html>
   <head>
     <title>Edit Appointment Information</title>
+    <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
     <form action='processMadeAppt.php' method='post' name='formUpdateAppt'>
       <fieldset class='group'>
         <legend><caption><label for='selectedDate'>Edit Appointment</label></caption></legend>
         <input type="hidden" name="m_id" value="<?php echo $m_id; ?>">
-        <input type='date' name='date' value='<?php echo $date; ?>'/><br/>
         <span>Select Appointment Start Time (Hour - Minute - AM/PM): </span><input type="time" name="start_time" value="<?php echo $start_time; ?>"><br/>
         <span>Select Appointment End Time (Hour - Minute - AM/PM): </span><input type="time" name="end_time" value="<?php echo $end_time; ?>"><br/>
         <span>Number of Students Capacity (1-40): </span><input type="number" name="num_students" min="1" max="40" value="<?php echo $num_students; ?>"><br/>
@@ -43,7 +43,7 @@ $session_leader = $row['session_leader'];
           <option value="Christine Powers"<?php if ($session_leader == "Christine Powers") { echo " selected"; } ?>>Ms. Christine Powers</option>
           <option value="CNMS Advisors"<?php if ($session_leader == "CNMS Advisors") { echo " selected"; } ?>>CNMS Advisors</option>
         </select><br/>
-        <input type='submit' value='Save Appointment'>
+        <input class="button" type='submit' value='Save Appointment'>
       </fieldset><br/><br/>
     </form>
   </body>

@@ -7,6 +7,7 @@ date_default_timezone_set('EST');
 <html>
 <head>
 	<title>Create New Appointment</title>
+	<link rel="stylesheet" href="../styles.css" type="text/css">
 </head>
 <body>
 	<form action='processAppts.php' method='post' name='formEdit'>
@@ -27,7 +28,7 @@ date_default_timezone_set('EST');
 	      <option value="Christine Powers">Ms. Christine Powers</option>
 	      <option value="CNMS Advisors">CNMS Advisors</option>
 	    </select><br/>
-	    <input type='submit' value='Save Appointments'>
+	    <input class="button" type='submit' value='Save Appointments'>
 	  </fieldset><br/><br/>
 	</form>
 </body>
