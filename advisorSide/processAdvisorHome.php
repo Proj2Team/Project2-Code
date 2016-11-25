@@ -5,7 +5,7 @@ $selectedOption = $_POST['next'];
 switch ($selectedOption)
   {
   case "Edit Appointments":
-    header('Location: editAppts.php');
+    header('Location: pickDate.php');
     break;
   case "View Appointments":
     header('Location: viewAppts.php');

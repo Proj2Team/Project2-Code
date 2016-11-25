@@ -7,8 +7,8 @@ $COMMON = new Common($debug);
 $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 $email = $_SESSION['email'];
+$date = $_POST['selectedDate'];
 date_default_timezone_set('EST');
-$today = date("Y-m-d");
 
 // If processing appointment and appointment already exists, then go to updating appointment page
 if ($_SESSION['apptExists'] == true) {
@@ -28,29 +28,27 @@ function getApptTimes($id, $date) {
   $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$id' AND `date` = '$date'";
   $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-# get number of students that signed up for this date this time this advisor
-# compute available openings
-#  $sql = "SELECT * FROM `student_appts` WHERE `advisor_ID` = '$advisorID' AND `date` = '$date'";
-#  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-#  $matches = mysql_num_rows($rs);
-#  echo("$matches matches were found.");
-
-# get student id that signed up for this advisor on this date -- save in array for multiples
+  // get student id that signed up for this advisor on this date -- save in array for multiples
 
   echo("<table border='1px' style='width:35%'>");
-  echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Number of Participants</th><th>Location</th></tr>");
+  echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th></th></tr>");
   $index = 0;
   while ( $row = mysql_fetch_assoc($rs) ) {
-    echo("<tr>");
-      echo("<td>".$row['session_leader']."</td>");
-      echo("<td>".$row['start_time']."</td>");
-      echo("<td>".$row['end_time']."</td>");
+    echo("<tr>\n");
+      echo("<td>".$row['session_leader']."</td>\n");
+      echo("<td>".date("g:i a", strtotime($row['start_time']))."</td>\n");
+      echo("<td>".date("g:i a", strtotime($row['end_time']))."</td>\n");
       if ($row['session_type'] == 0) { $sessType = "Group";}
       else {$sessType = "Individual";}
-      echo ("<td>".$sessType."</td>");
-      echo("<td>".$row['num_students']."</td>");
-      echo ("<td>".$row['location']."</td>");
-    echo("</tr>");
+      echo ("<td>".$sessType."</td>\n");
+      echo("<td>".$row['num_students']."</td>\n");
+      echo("<td>".$row['participants']."</td>\n");
+      echo ("<td>".$row['location']."</td>\n");
+      echo "<td><form action='editMadeAppt.php' method='post' name='formEditMadeAppt'>\n";
+      echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
+      echo "<input type='submit' value='Edit'>\n";
+      echo "</form></td>\n";
+    echo("</tr>\n");
   }
   return $row;
 }
@@ -80,29 +78,12 @@ function getApptTimes($id, $date) {
       }
     </style>
   </head>
-
   <body>
-
-    <form action='processAppts.php' method='post' name='formEdit'>
-      <fieldset class='group'>
-        <legend><caption><label for='selectedDate'> Appointment Date: </label><input id='selectedDate' type='date' name='selectedDate' value='<?php echo $today; ?>' min='<?php echo $today; ?>'/></caption></legend>
-        <span>Select Appointment Start Time (Hour - Minute - AM/PM): </span><input type="time" name="start_time"><br/>
-        <span>Select Appointment End Time (Hour - Minute - AM/PM): </span><input type="time" name="end_time"><br/>
-        <span>Number of Students Capacity (1-40): </span><input type="number" name="numStudents" min="1" max="40" value="1"><br/>
-        <span>Location (Optional): </span><input type="text" name="location"><br/>
-        <span>Session Type: </span><br/>
-        <input type="radio" name="session_type" value="Group"> Group <br/>
-        <input type="radio" name="session_type" value="Individul"> Individual <br/>
-        <span>Session Leader: </span><br/>
-        <select name="session_leader">
-          <option value="Michelle Bulger">Ms. Michelle Bulger</option>
-          <option value="Julie Crosby">Mrs. Julie Crosby</option>
-          <option value="Christine Powers">Ms. Christine Powers</option>
-          <option value="CNMS Advisors">CNMS Advisors</option>
-        </select><br/>
-        <?php getApptTimes($id, $today); ?>
-        <input type='submit' value='Save Appointments'>
-      </fieldset><br/><br/>
+    <form action="createNewAppt.php" method="post" name="formCreateAppt">
+      <input type="hidden" name="date" value="<?php echo $date; ?>">
+      <input type="submit" value="Create New Appointment">
     </form>
+    <span> Viewing Appointments for <?php echo date("l Y-m-d", strtotime($date)); ?></span>
+    <?php getApptTimes($id, $date); ?>
   </body>
 </html>
