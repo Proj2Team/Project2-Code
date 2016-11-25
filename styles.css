@@ -1,1 +1,79 @@
+/* stylings for entire site */
 
+body {
+	font-family: helvetica, sans-serif;
+	text-align: center;
+}
+
+
+/*
+To add styling to a single HTML element (like an <input>), add the button class
+To add styling to all input child input elements (that are type submit), add button-parent class to parent container
+*/
+
+.button,
+.button-parent input[type="submit"] {
+    border: none;
+    background-color: #464AF4;
+    transition: background-color 0.2s;
+    color: #FFF;
+    height: 45px;
+    font-size: 1.1em;
+    font-weight: 300;
+    margin-top: 15px;
+    border-radius: 2px;
+    padding: 0 20px;
+}
+
+.button:hover,
+.button-parent input[type="submit"]:hover {
+	background-color: #5A68FF;
+}
+
+/* edit-button is a special button used specifically with tables, so it fills an entire cell, and doesn't look weird */
+.edit-button {
+	border: none;
+	background-color: transparent;
+    transition: background-color 0.2s;
+    color: #000;
+    height: 100%;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.edit-button:hover {
+	background-color: #B6BABD;
+}
+
+/* use form-fill to accompany the button */
+
+.form-fill {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* For fancy title, add title class to element */
+
+.big-title {
+	font-weight: 300;
+	font-size: 3em;
+	margin: 15px auto;
+}
+
+.medium-title {
+	font-weight: 300;
+	font-size: 1.6em;
+	margin: 15px auto;
+}
+
+/* General code to make an input field bigger */
+
+.large-input {
+	font-size: 1.2em;
+	padding: 3px 10px;
+}

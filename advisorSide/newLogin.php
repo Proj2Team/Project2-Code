@@ -4,7 +4,8 @@ session_start();
 
 <html>
   <head>
-    <title></title>
+    <title>Login</title>
+    <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
 

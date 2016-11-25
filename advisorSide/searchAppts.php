@@ -9,6 +9,7 @@ $COMMON = new Common($debug);
 <html>
 	<head>
 		<title>Appointment Search</title>
+		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
 

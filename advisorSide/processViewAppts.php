@@ -65,6 +65,7 @@ getApptTimes($id, $date);
 <html>
   <head>
     <title>Edit Appointments</title>
+    <link rel="stylesheet" href="../styles.css" type="text/css">
     <style>
       table, th, td {
         border: 1px solid gray;

@@ -29,14 +29,6 @@ $sql = "UPDATE `advisor_info` SET `username` = '$username', `password` = '$encry
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 if ( isset($majors) ) {
-	/* $cols = array('bsci_BA', 'bsci_BS', 'bchem_BS', 'binf_BS', 'bsciEd_BA', 'chem_BA', 'chem_BS', 'chemEd_BA'); */
-
-	/* foreach($cols as $col) */
-	/*   { */
-	/* 	if(in_array($col, $majors)) */
-
-	/*   } */
-
 	$sqlMajor = "UPDATE `advisors_majors` SET `bsci_BA` = '$majors[0]', `bsci_BS` = '$majors[1]', `bchem_BS` = '$majors[2]', `binf_BS` = '$majors[3]', `bsciEd_BA` = '$majors[4]', `chem_BA` = '$majors[5]', `chem_BS` = '$majors[6]', `chemEd_BA` = '$majors[7]' WHERE `id` = '$advisorID'";
 	$rsMajor = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 }

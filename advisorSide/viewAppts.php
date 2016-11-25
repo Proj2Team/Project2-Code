@@ -7,6 +7,7 @@ $today = date("Y-m-d");
 <html>
 	<head>
 		<title>View Appointments</title>
+		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
 		<form action='processViewAppts.php' method='post' name='ViewAppts'>

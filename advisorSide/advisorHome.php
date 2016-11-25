@@ -13,23 +13,18 @@ $user = $_SESSION['username'];
 <html>
   <head>
     <title>Advisor Home</title>
-    <link rel="stylesheet" href="advisor.css" type="text/css">
-    <style>
-      input[type=submit] {
-        background-color: #ffcc00;
-        border: none;
-        color: #000000;
-        text-decoration: none;
-        margin: 4px 2px;
-        text-transform: uppercase;
+    <link rel="stylesheet" href="../styles.css" type="text/css">
+    <style type="text/css">
+      .button-parent input {
+        width: 16em;
       }
     </style>
   </head>
 
   <body>
 
-    <h2>Welcome, <?php echo "$user";?></h2>
-    <form action='processAdvisorHome.php' method='post' name='advisorHome'>
+    <h2 class="big-title">Welcome, <?php echo "$user";?></h2>
+    <form class="button-parent" action='processAdvisorHome.php' method='post' name='advisorHome'>
       <input type='submit' name='next' value='Edit Appointments'><br/>
       <input type='submit' name='next' value='View Appointments'><br/>
       <input type='submit' name='next' value='Search Appointments'><br/>
