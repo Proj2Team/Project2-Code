@@ -31,6 +31,7 @@ To add styling to all input child input elements (that are type submit), add but
 }
 
 /* edit-button is a special button used specifically with tables, so it fills an entire cell, and doesn't look weird */
+/* Be sure to use form-fill along with it! */
 .edit-button {
 	border: none;
 	background-color: transparent;
@@ -46,8 +47,7 @@ To add styling to all input child input elements (that are type submit), add but
 	background-color: #B6BABD;
 }
 
-/* use form-fill to accompany the button */
-
+/* use form-fill to accompany the edit-button */
 .form-fill {
 	height: 100%;
 	width: 100%;
@@ -83,11 +83,16 @@ To add styling to all input child input elements (that are type submit), add but
 
 .table {
 	width: 100%;
+	min-width: 1000px;
 }
 .table, .table th, .table td {
-	border: 1px solid gray;
+	border: none;
 	border-collapse: collapse;
 	font-family: helvetica;
+}
+
+.table th {
+	border-bottom: 1px solid gray;
 }
 
 .table th, .table td {

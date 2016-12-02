@@ -1,12 +1,13 @@
 <?php
 session_start();
 #var_dump($_POST);
-//include('../studentSide/CommonMethods.php');
+
+//
+//
 // Make sure the file you are calling from had CommonMethods.php included!!!!!!!!!!!!!!!!
 // This file is not including the CommonMethods!
-
-//$debug = true;
-//$COMMON = new Common($debug);
+//
+//
 
 # Function that creates advisor, then takes you back to advisorHome.php
 # This should only be called by processNewAdvisor.php, unless you call it somewhere else...

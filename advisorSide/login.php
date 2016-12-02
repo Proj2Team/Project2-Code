@@ -29,15 +29,9 @@ session_start();
       </div>
 
       <div class='loginButton'>
-        <input type='submit' value='Login'>
+        <input class="button" type='submit' value='Login'>
       </div>
     </form>
 
-    <!-- <form action='advisorInfo.php' method='post' name='CreateAccount'>
-      <div class='field'>
-        <label for='submit'>Don't have an account set up yet?</label><br/>
-        <input type='submit' value='Create New Account'>
-      </div>
-    </form> -->
   </body>
 </html>
