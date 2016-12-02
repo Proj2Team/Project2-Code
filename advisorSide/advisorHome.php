@@ -29,6 +29,7 @@ $user = $_SESSION['username'];
       <input type='submit' name='next' value='View Appointments'><br/>
       <input type='submit' name='next' value='Search Appointments'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>
+      <input type='submit' name='next' value='Create New Advisor Account'><br/>
       <input type='submit' name='next' value='Logout'><br/>
     </form>
 

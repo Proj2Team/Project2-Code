@@ -1,30 +1,32 @@
 <?php
-session_start();
+//session_start();
 include('../studentSide/CommonMethods.php');
+include('createAdvisor.php');
 
 $debug = true;
 $COMMON = new Common($debug);
 
-$_SESSION['newFirst'] = $_POST['fname'];
-$_SESSION['newLast'] = $_POST['lname'];
-$_SESSION['newUsername'] = $_POST['username'];
-$_SESSION['newPass'] = $_POST['pass'];
+$new_fname = $_POST['fname'];
+$new_lname = $_POST['lname'];
+$new_username = $_POST['username'];
+$new_pass = $_POST['pass'];
+$encrypted_pass = md5($new_pass);
 $_SESSION['confirmedPass'] = false;
 $_SESSION['advisorExists'] = false;
-$_SESSION['office'] = $_POST['office'];
-$_SESSION['email'] = $_POST['email'];
-$_SESSION['majors'] = $_POST['majors'];
+$new_office = $_POST['office'];
+$new_email = $_POST['email'];
+$new_major = $_POST['majors'];
 
-$sql = "SELECT * FROM `advisor_info` WHERE `username` = '$_POST[username]' AND `lname` = '$_POST[lname]' AND `fname` = '$_POST[fname]'";
+$sql = "SELECT * FROM `advisor_info` WHERE `username` = '$new_username' AND `lname` = '$new_lname' AND `fname` = '$new_fname'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
 
-if ($_POST['pass'] == $_POST['confirmPass']) {
-  header('Location: createAdvisor.php');
-} elseif ($_POST['pass'] != $_POST['confirmPass']) {
+if ($_POST['pass'] == $_POST['confirmPass']) { // correctly confirmed password
+  createAdvisor($new_fname, $new_lname, $new_username, $new_pass, $encrypted_pass, $new_office, $new_email, $new_major);
+} elseif ($_POST['pass'] != $_POST['confirmPass']) { // password confirmation failed
   $_SESSION['confirmedPass'] = true;
   header('Location: advisorInfo.php');
-} elseif ($row) {
+} elseif ($row) { // advisor already exists
   $_SESSION['advisorExists'] = true;
   header('Location: advisorInfo.php');
 }

@@ -12,9 +12,6 @@ $user = $_SESSION['username'];
 $pass = $_SESSION['pass'];
 $encrypted_pass = md5($pass);
 
-/* $sql = "INSERT INTO `advisor_accounts`(`id`, `username`, `password`) VALUES ('', '$user', '$encrypted_pass')"; */
-/* $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]); */
-
 $sql = "SELECT * FROM `advisor_info` WHERE `username` = '$user' AND `password` = '$encrypted_pass'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);

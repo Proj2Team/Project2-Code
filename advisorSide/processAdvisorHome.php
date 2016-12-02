@@ -16,6 +16,9 @@ switch ($selectedOption)
   case "Edit Your Account Info":
     header('Location: editAdvisorInfo.php');
     break;
+  case "Create New Advisor Account":
+    header('Location: advisorInfo.php');
+    break;
   case "Logout":
     header('Location: processLogout.php');
     break;

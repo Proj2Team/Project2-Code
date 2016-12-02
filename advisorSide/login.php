@@ -33,11 +33,11 @@ session_start();
       </div>
     </form>
 
-    <form action='advisorInfo.php' method='post' name='CreateAccount'>
+    <!-- <form action='advisorInfo.php' method='post' name='CreateAccount'>
       <div class='field'>
         <label for='submit'>Don't have an account set up yet?</label><br/>
         <input type='submit' value='Create New Account'>
       </div>
-    </form>
+    </form> -->
   </body>
 </html>
