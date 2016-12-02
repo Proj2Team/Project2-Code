@@ -7,6 +7,7 @@ $COMMON = new Common($debug);
 $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 $email = $_SESSION['email'];
+
 $date = $_POST['selectedDate'];
 date_default_timezone_set('EST');
 
@@ -30,7 +31,7 @@ function getApptTimes($id, $date) {
 
   // get student id that signed up for this advisor on this date -- save in array for multiples
 
-  echo("<table border='1px'>");
+  echo("<table class='table' border='1px'>");
   echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th></th></tr>");
   while ( $row = mysql_fetch_assoc($rs) ) {
     echo("<tr>\n");
@@ -49,6 +50,7 @@ function getApptTimes($id, $date) {
       echo "</form></td>\n";
     echo("</tr>\n");
   }
+  echo "</table>";
   return $row;
 }
 
@@ -57,34 +59,6 @@ function getApptTimes($id, $date) {
   <head>
     <title>Edit Appointments</title>
     <link rel="stylesheet" href="../styles.css" type="text/css">
-    <style>
-      table {
-        width: 100%;
-      }
-      table, th, td {
-        border: 1px solid gray;
-        border-collapse: collapse;
-        font-family: helvetica;
-      }
-
-      th, td {
-        padding: 10px;
-        text-align: left;
-      }
-
-      td {
-        position: relative;
-        min-width: 50px;
-      }
-
-      tr:nth-child(even) {
-        background-color:#eee;
-      }
-
-      tr:nth-child(odd) {
-        background-color:#fff;
-      }
-    </style>
   </head>
   <body>
     <form action="createNewAppt.php" method="post" name="formCreateAppt">
@@ -93,5 +67,13 @@ function getApptTimes($id, $date) {
     </form>
     <h3 class="medium-title">Viewing Appointments for <?php echo date("l Y-m-d", strtotime($date)); ?></h3>
     <?php getApptTimes($id, $date); ?>
+    <form action='editAppts.php' method='post' name='formEdit'>
+        <h3 class="medium-title"> Select another date to view: </h3>
+        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>'/><br/>
+        <input class="button" type='submit' value='Select Date'>
+    </form>
+    <form action="advisorHome.php" method="post" name="backHome">
+      <input class="button" type='submit' value='Back to Dashboard'>
+    </form>
   </body>
 </html>

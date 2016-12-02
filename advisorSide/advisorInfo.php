@@ -26,7 +26,7 @@ session_start();
     Confirm Password: <input type='password' size='25' maxlength='50' name='confirmPass' required><br/><br/>
     Office Location: <input type='text' size='25' maxlength='10' name='office' required><br/><br/>
     Email: <input type='email' size='25' maxlength='50' name='email' required><br/><br/>
-    Select Majors to Advise:<br/>
+    Select Majors to Advise: (Hold control and click to select multiple)<br/>
     <select name='majors[]' multiple='multiple'>
       <option value='bsci_BA'>Biological Sciences BA</option>
       <option value='bsci_BS'>Biological Sciences BS</option>
@@ -37,7 +37,10 @@ session_start();
       <option value='chem_BS'>Chemistry BS</option>
       <option value='chemEd_BA'>Chemistry Education BA</option>
     </select><br/><br/>
-    <input type='submit' value='Save Profile'>
+    <input class="button" type='submit' value='Save Profile'>
+  </form>
+  <form action="advisorHome.php" method="post" name="backHome">
+    <input class="button" type='submit' value='Back to Dashboard'>
   </form>
 
   </body>

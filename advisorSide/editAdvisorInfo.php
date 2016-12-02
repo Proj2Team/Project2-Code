@@ -9,15 +9,12 @@ session_start();
   <body>
 
     <?php
-    if($_SESSION['confirmedPass'] == true)
-      {
-        echo "Passwords do not match.";
-      }
-
-    if($_SESSION['advisorExists'] == true)
-      {
-        echo "Advisor already exists.";
-      }
+    if ($_SESSION['confirmedPass'] == true) {
+      echo "Passwords do not match.";
+    }
+    if ($_SESSION['advisorExists'] == true) {
+      echo "Advisor already exists.";
+    }
     ?>
 
     <form action='updateAdvisorInfo.php' method='post' name='UpdateProfile'>
@@ -39,8 +36,10 @@ session_start();
       <option value='chem_BS'>Chemistry BS</option>
       <option value='chemEd_BA'>Chemistry Education BA</option>
       </select><br/><br/>
-      <input type='submit' value='Update Profile'>
+      <input class="button" type='submit' value='Update Profile'>
     </form>
-
+    <form action="advisorHome.php" method="post" name="backHome">
+      <input class="button" type='submit' value='Back to Dashboard'>
+    </form>
   </body>
 </html>

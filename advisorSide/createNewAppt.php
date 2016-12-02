@@ -31,5 +31,12 @@ date_default_timezone_set('EST');
 	    <input class="button" type='submit' value='Save Appointments'>
 	  </fieldset><br/><br/>
 	</form>
+	<form action='editAppts.php' method='post' name='formEdit'>
+        <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/><br/>
+        <input class="button" type='submit' value='Back to Appointment View'>
+    </form>
+	<form action="advisorHome.php" method="post" name="backHome">
+      <input class="button" type='submit' value='Back to Dashboard'>
+    </form>
 </body>
 </html>

@@ -11,8 +11,12 @@ $today = date("Y-m-d");
 	</head>
 	<body>
 		<form action='processViewAppts.php' method='post' name='ViewAppts'>
-		<p><caption><label for='viewDate'> Your Schedule for: </label><input id='viewDate' type='date' name='viewDate' value='<?php echo $today; ?>' min='<?php echo $today; ?>'/></caption></p>
-		<input type='submit' value='Go'>
+			<h3 class="medium-title"> Your Schedule For: </h3>
+			<input class="large-input" id='viewDate' type='date' name='viewDate' value='<?php echo $today; ?>' min='<?php echo $today; ?>'/><br/>
+			<input class="button" type='submit' value='Select Date'>
+		</form>
+		<form action="advisorHome.php" method="post" name="backHome">
+			<input class="button" type='submit' value='Back to Dashboard'>
 		</form>
 	</body>
 </html>
