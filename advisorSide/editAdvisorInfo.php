@@ -13,7 +13,7 @@ session_start();
       echo "<span style='color: red;'>Passwords do not match.</span>";
     }
     ?>
-    <h3 class="medium-title">Editting Your Account Profile</h3>
+    <h3 class="medium-title">Editing Your Account Profile</h3>
     <form class="center-form form-clean" action='updateAdvisorInfo.php' method='post' name='UpdateProfile'>
       <div class="wrap-align-left">
         <span class="small-header">First Name:</span><br/>
