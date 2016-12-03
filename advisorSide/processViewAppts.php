@@ -61,7 +61,7 @@ function getApptTimes($id, $date) {
     <?php getApptTimes($id, $date); ?>
     <form action='processViewAppts.php' method='post' name='formEdit'>
         <h3 class="medium-title"> Select another date to view: </h3>
-        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>'/><br/>
+        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>' placeholder="YYYY-MM-DD"/><br/>
         <input class="button" type='submit' value='Select Date'>
     </form>
     <form action="advisorHome.php" method="post" name="backHome">

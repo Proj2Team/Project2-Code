@@ -12,7 +12,7 @@ $today = date("Y-m-d"); ?>
 	<body>
 		<form action='editAppts.php' method='post' name='formEdit'>
 		    <h3 class="medium-title"> Select a date you would like to view: </h3>
-		    <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $today; ?>'/><br/>
+		    <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $today; ?>' placeholder="YYYY-MM-DD"/><br/>
 		    <input class="button" type='submit' value='Select Date'>
 		</form>
 		<form action="advisorHome.php" method="post" name="backHome">

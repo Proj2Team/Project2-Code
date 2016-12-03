@@ -8,7 +8,11 @@ $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 $email = $_SESSION['email'];
 
-$date = $_POST['selectedDate'];
+if (isset($_POST['selectedDate'])) {
+  $date = $_POST['selectedDate'];
+} else {
+  $date = $_GET['selectedDate'];
+}
 date_default_timezone_set('EST');
 
 // If processing appointment and appointment already exists, then go to updating appointment page
@@ -69,7 +73,7 @@ function getApptTimes($id, $date) {
     <?php getApptTimes($id, $date); ?>
     <form action='editAppts.php' method='post' name='formEdit'>
         <h3 class="medium-title"> Select another date to view: </h3>
-        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>'/><br/>
+        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>' placeholder="YYYY-MM-DD"/><br/>
         <input class="button" type='submit' value='Select Date'>
     </form>
     <form action="advisorHome.php" method="post" name="backHome">
