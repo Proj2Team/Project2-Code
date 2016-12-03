@@ -14,12 +14,12 @@ date_default_timezone_set('EST');
 	  <fieldset class='group'>
 	    <legend><caption><label for='selectedDate'> Creating Appointment for <?php echo date("l Y-m-d", strtotime($date)); ?> </label></caption></legend>
 	    <input name='selectedDate' type='hidden' value='<?php echo $date; ?>'/>
-	    <span>Select Appointment Start Time (Hour:Minute AM/PM): </span><input type="time" name="start_time" placeholder="HR:MN AM/PM"><br/>
-	    <span>Select Appointment End Time (Hour:Minute AM/PM): </span><input type="time" name="end_time" placeholder="HR:MN AM/PM"><br/>
-	    <span>Number of Students Capacity (1-40): </span><input type="number" name="numStudents" min="1" max="40" value="1"><br/>
+	    <span>Select Appointment Start Time (Hour:Minute AM/PM): </span><input type="time" name="start_time" placeholder="HR:MN AM/PM" required><br/>
+	    <span>Select Appointment End Time (Hour:Minute AM/PM): </span><input type="time" name="end_time" placeholder="HR:MN AM/PM" required><br/>
+	    <span>Number of Students Capacity (1-40): </span><input type="number" name="numStudents" min="1" max="40" value="1" required><br/>
 	    <span>Location (Optional): </span><input type="text" name="location"><br/>
 	    <span>Session Type: </span><br/>
-	    <input type="radio" name="session_type" value="Group" checked> Group <br/>
+	    <input type="radio" name="session_type" value="Group" checked required> Group <br/>
 	    <input type="radio" name="session_type" value="Individul"> Individual <br/>
 	    <span>Session Leader: </span><br/>
 	    <select name="session_leader">

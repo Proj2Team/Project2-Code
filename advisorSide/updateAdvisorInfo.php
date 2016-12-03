@@ -25,14 +25,20 @@ $email = $_SESSION['email'];
 $majors = $_SESSION['majors'];
 $advisorID = $_SESSION['advisorID'];
 
-$sql = "UPDATE `advisor_info` SET `username` = '$username', `password` = '$encrypted_pass', `lname` = '$last', `fname` = '$first', `office` = '$office', `email` = '$email' WHERE `id` = '$advisorID'";
-$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+if ($_POST['pass'] == $_POST['confirmPass']) // correctly confirmed password
+{
+	$sql = "UPDATE `advisor_info` SET `username` = '$username', `password` = '$encrypted_pass', `lname` = '$last', `fname` = '$first', `office` = '$office', `email` = '$email' WHERE `id` = '$advisorID'";
+	$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-if ( isset($majors) ) {
-	$sqlMajor = "UPDATE `advisors_majors` SET `bsci_BA` = '$majors[0]', `bsci_BS` = '$majors[1]', `bchem_BS` = '$majors[2]', `binf_BS` = '$majors[3]', `bsciEd_BA` = '$majors[4]', `chem_BA` = '$majors[5]', `chem_BS` = '$majors[6]', `chemEd_BA` = '$majors[7]' WHERE `id` = '$advisorID'";
-	$rsMajor = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	if ( isset($majors) ) {
+		$sqlMajor = "UPDATE `advisors_majors` SET `bsci_BA` = '$majors[0]', `bsci_BS` = '$majors[1]', `bchem_BS` = '$majors[2]', `binf_BS` = '$majors[3]', `bsciEd_BA` = '$majors[4]', `chem_BA` = '$majors[5]', `chem_BS` = '$majors[6]', `chemEd_BA` = '$majors[7]' WHERE `id` = '$advisorID'";
+		$rsMajor = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+	}
+	header('Location: advisorHome.php');
 }
-
-header('Location: advisorHome.php');
-
+else // password confirmation failed
+{
+  $_SESSION['confirmedPass'] = true;
+  header('Location: editAdvisorInfo.php');
+}
 ?>

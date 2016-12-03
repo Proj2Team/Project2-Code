@@ -30,12 +30,12 @@ $session_leader = $row['session_leader'];
         <legend><caption><label for='selectedDate'>Edit Appointment</label></caption></legend>
         <input type="hidden" name="m_id" value="<?php echo $m_id; ?>">
         <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
-        <span>Select Appointment Start Time (Hour:Minute - AM/PM): </span><input type="text" name="start_time" value="<?php echo date("h:i A", strtotime($start_time)); ?>" placeholder="HR:MN AM/PM"><br/>
-        <span>Select Appointment End Time (Hour:Minute - AM/PM): </span><input type="text" name="end_time" value="<?php echo date("h:i A", strtotime($end_time)); ?>" placeholder="HR:MN AM/PM"><br/>
-        <span>Number of Students Capacity (1-40): </span><input type="number" name="num_students" min="1" max="40" value="<?php echo $num_students; ?>"><br/>
+        <span>Select Appointment Start Time (Hour:Minute - AM/PM): </span><input type="text" name="start_time" value="<?php echo date("h:i A", strtotime($start_time)); ?>" placeholder="HR:MN AM/PM" required><br/>
+        <span>Select Appointment End Time (Hour:Minute - AM/PM): </span><input type="text" name="end_time" value="<?php echo date("h:i A", strtotime($end_time)); ?>" placeholder="HR:MN AM/PM" required><br/>
+        <span>Number of Students Capacity (1-40): </span><input type="number" name="num_students" min="1" max="40" value="<?php echo $num_students; ?>" required><br/>
         <span>Location (Optional): </span><input type="text" name="location" value="<?php echo $location; ?>"><br/>
         <span>Session Type: </span><br/>
-        <input type="radio" name="session_type" value="Group"<?php if ($session_type == 0) { echo " checked"; } ?>> Group <br/>
+        <input type="radio" name="session_type" value="Group"<?php if ($session_type == 0) { echo " checked"; } ?> required> Group <br/>
         <input type="radio" name="session_type" value="Individul"<?php if ($session_type == 1) { echo " checked"; } ?>> Individual <br/>
         <span>Session Leader: </span><br/>
         <select name="session_leader">

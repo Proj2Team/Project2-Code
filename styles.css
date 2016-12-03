@@ -112,3 +112,58 @@ To add styling to all input child input elements (that are type submit), add but
 .table tr:nth-child(odd) {
 	background-color:#fff;
 }
+
+/* To center a form element, add center-form class to form element */
+
+.center-form {
+	width: 40em;
+	max-width: 100%;
+	margin: 30px auto;
+}
+
+/* For fancy input boxes and stuff, add form-clean class to form element */
+/* Suggested: Apply span's with class small-header and have them above inputs */
+
+.form-clean input {
+	width: 50%;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 10px 5px 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.form-clean input:focus {
+	border-bottom: 2px solid #5A68FF;
+}
+
+.small-header {
+	font-size: 0.8em;
+	font-weight: 300;
+}
+
+.medium-header {
+	font-size: 1.1em;
+	font-weight: 300;
+}
+
+.medium-select {
+	width: 35em;
+	height: 12em;
+	font-size: 1em;
+	padding: 5px;
+}
+
+/* wrap-align-left, used to center a block within a form-cleam (or anywhere really), and align the inside stuff left */
+/* To use, add to a div class wrap-align-left that contains elements you wish to align left but not all the way left in the parent container*/
+
+.wrap-align-left {
+	width: 50%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.wrap-align-left input {
+	width: 100%;
+}
