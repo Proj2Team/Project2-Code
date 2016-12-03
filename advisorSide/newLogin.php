@@ -16,12 +16,12 @@ session_start();
 
     <form action='processLogin.php' method='post' name='AdvisorLogin'>
       <div class='field'>
-        <label for='username'>Username</label><br/>
-        <input id='username' type='text' size='25' maxlength='50' name='username' required><br/>
+        <label for='email'>UMBC Email:</label><br/>
+        <input id='email' type='text' size='25' maxlength='50' name='email' required><br/>
       </div>
 
       <div class='field'>
-        <label for='passw'>Password</label><br/>
+        <label for='passw'>Password:</label><br/>
         <input id='pass' type='password' size='25' maxlength='50' name='pass' required><br/>
       </div>
 

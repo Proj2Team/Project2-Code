@@ -14,7 +14,7 @@ $encrypted_pass = md5($new_pass);
 $_SESSION['confirmedPass'] = false;
 $_SESSION['advisorExists'] = false;
 $new_office = $_POST['office'];
-$new_email = $_POST['email'];
+$new_email = strtolower($_POST['email']);
 $new_major = $_POST['majors'];
 
 $sql = "SELECT * FROM `advisor_info` WHERE `username` = '$new_username' AND `lname` = '$new_lname' AND `fname` = '$new_fname'";

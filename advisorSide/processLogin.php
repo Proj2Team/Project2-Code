@@ -4,19 +4,20 @@ $debug = false;
 include('../studentSide/CommonMethods.php');
 $COMMON = new Common($debug);
 
-$_SESSION['username'] = ($_POST['username']);
-$_SESSION['pass'] = ($_POST['pass']);
+$_SESSION['email'] = strtolower($_POST['email']);
+$_SESSION['pass'] = $_POST['pass'];
 $_SESSION['userValue'] = false;
 
-$user = $_SESSION['username'];
+$email = $_SESSION['email'];
 $pass = $_SESSION['pass'];
 $encrypted_pass = md5($pass);
 
-$sql = "SELECT * FROM `advisor_info` WHERE `username` = '$user' AND `password` = '$encrypted_pass'";
+$sql = "SELECT * FROM `advisor_info` WHERE `email` = '$email' AND `password` = '$encrypted_pass'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);
 
 if ($row) {
+  $_SESSION['username'] = $row['username'];
   $advisorID = $row['id'];
   $last = $row['lname'];
   $first = $row['fname'];

@@ -6,7 +6,7 @@ include('../studentSide/CommonMethods.php');
 $COMMON = new Common($debug);
 $_SESSION['confirmedPass'] = false;
 $_SESSION['apptExists'] = false;
-$user = $_SESSION['username'];
+$fname = $_SESSION['first'];
 ?>
 
 
@@ -23,10 +23,10 @@ $user = $_SESSION['username'];
 
   <body>
 
-    <h2 class="big-title">Welcome, <?php echo "$user";?></h2>
+    <h2 class="big-title">Welcome, <?php echo "$fname";?></h2>
     <form class="button-parent" action='processAdvisorHome.php' method='post' name='advisorHome'>
       <input type='submit' name='next' value='Edit Appointments'><br/>
-      <input type='submit' name='next' value='View Appointments'><br/>
+      <input type='submit' name='next' value='View All Appointments'><br/>
       <input type='submit' name='next' value='Search Appointments'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>
       <input type='submit' name='next' value='Create New Advisor Account'><br/>

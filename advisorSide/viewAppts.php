@@ -6,7 +6,7 @@ $today = date("Y-m-d");
 ?>
 <html>
 	<head>
-		<title>View Appointments</title>
+		<title>View All Appointments</title>
 		<link rel="stylesheet" href="../styles.css" type="text/css">
 	</head>
 	<body>
