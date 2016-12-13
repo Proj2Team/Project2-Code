@@ -1,5 +1,8 @@
 <?php
 session_start();
+$debug = false;
+include('CommonMethods.php');
+$COMMON = new Common($debug);
 ?>
 <html>
 <head>
@@ -7,80 +10,72 @@ session_start();
 <title>Search Appointments</title>
 <link rel="stylesheet" href="styles.css">
 
-<!--Embedded JavaScript doesn't work yet-->
-<script>
-	var selAll = document.getElementById("selectAll");
-	
-	function checkUncheckAll() {
-		if(selAll.checked == true)
-		{
-			document.getElementById("cb").checked = true;
-		}
-		else
-		{
-			document.getElementById("cb").checked = false;
-		}
-	}
-	
-	selAll.addEventListener("click", checkUncheckAll());
-
-</script>
-
 </head>
 <body>
-<form action='appointmentDisplay.php' method='post'>
+<form action='displayAppointments.php' method='post'>
 <!-- UMBC ID: <input type='text' value='umbc_ID'> --> <!--Is this really necessary???-->
 <br><br>
 
-Appointment Date:
-<input type='date' name='date'> 
-<br><br>
+<?php
 
+
+$sql = "SELECT * FROM students_basic_info WHERE `id` = $_SESSION[studentID]";
+
+$rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+$row = mysql_fetch_assoc($rs);
+
+//by some error there is no user logged in, redirect
+if(!$row)
+{
+	header('Location: newLogin.php');
+}
+
+//display message if student already has a meeting
+if($row['appt_id'] != '') 
+{
+   echo("NOTE: YOU ALREADY HAVE A MEETING SCHEDULED.");
+	echo('<br>');
+   echo("You can search for appointments, but you cannot add a meeting until you cancel your current appointment");
+   	echo('<p>');
+}
+
+?>
+
+
+<!--EDIT BY KHADIJAH: Added default value for date to be today and a minimum so that a student-->
+<!--cannot look at an appointment in the past. TEMPORARILY REMOVED MIN FOR DEBUGGING PURPOSES.-->
+Earliest Date:<br>
+<input type='date' name='date' value="<?php echo date('Y-m-d'); ?>" />
+<p>
+
+<!--EDIT BY KHADIJAH: Instead of the checkboxes I put in a time for from and to. not sure how-->
+<!--easy it'll be to implement (I'll be working on it) but it sure as heck looks neater than-->
+<!--the huge list of checkboxes. It'll also won't allow times to be entered outside of specified time-->
 Appointment Time:
 <br>
-<!--Select all button, optional use js-->
-<!--clear all button, optional use js-->
-<input id="selectAll" type='checkbox' value='selectAll'> Select All <br><br><!--Added, use js -->
-<input id="cb" type='checkbox' value='eight'> 8:00am - 8:30am<br><br>
-<input id="cb" type='checkbox' value='eight_thirty'> 8:30am - 9:00am<br><br>
-<input id="cb" type='checkbox' value='nine'> 9:00am - 9:30am<br><br>
-<input id="cb" type='checkbox' value='nine_thirty'> 9:30am - 10:00am<br><br>
-<input id="cb" type='checkbox' value='ten'> 10:00am - 10:30am<br><br>
-<input id="cb" type='checkbox' value='ten_thirty'> 10:30am - 11:00am<br><br>
-<input id="cb" type='checkbox' value='eleven'> 11:00am - 11:30am<br><br>
-<input id="cb" type='checkbox' value='eleven_thirty'> 11:30am - 12:00pm<br><br>
-<input id="cb" type='checkbox' value='twelve'> 12:00pm - 12:30pm<br><br>
-<input id="cb" type='checkbox' value='twelve_thirty'> 12:30pm - 1:00pm<br><br>
-<input id="cb" type='checkbox' value='one'> 1:00pm - 1:30pm<br><br>
-<input id="cb" type='checkbox' value='one_thirty'> 1:30pm - 2:00pm<br><br>
-<input id="cb" type='checkbox' value='two'> 2:00pm - 2:30pm<br><br>
-<input id="cb" type='checkbox' value='two_thirty'> 2:30pm - 3:00pm<br><br>
-<input id="cb" type='checkbox' value='three'> 3:00pm - 3:30pm<br><br>
-<input id="cb" type='checkbox' value='three_thirty'> 3:30pm - 4:00pm<br><br>
-<input id="cb" type='checkbox' value='four'> 4:00pm - 4:30pm<br><br>
+From: <input type = 'time' name = 'fromTime' min = "08:00" max = "18:00" step = "1800" value="08:00"> 
 
+To: <input type = 'time' name = 'toTime' min = "08:30" max = "18:30" step = "1800" value="08:30"><p>
 
-Choose Availability:
-<br><br>
-<!-- Change to radio buttons - Syake
-<select multiple required>
-<option value='all_appts'>All Appointments</option>
-<option value='indv_appts'>Individual Appointments</option>
-<option value='grp_appts'>Group Appointments</option>
--->
-
+Choose Meeting Type:
+<br>
+<!-- Change to radio buttons - Syake-->
 <!--default checked-->
-<input type='radio' value='all_appts' checked>All Appointments<br>
-<input type='radio' value='indv_appts'>Individual Appointments<br>
-<input type='radio' value='grp_appts'>Group Appointments<br>
+<input type='radio' name = 'appointment' value='all_appts' checked>All Appointments<br>
+<input type='radio' name = 'appointment' value='indv_appts'>Individual Appointments<br>
+<input type='radio' name = 'appointment' value='grp_appts'>Group Appointments<br>
 
 
 <br><br>
 <input type='submit' value='Go'>
 </form>
 
+
+<form action='homescreen.php' method='post'>
+<input type='submit' value='Back'>
+</form>
+
+
 </body>
 </html>
-
-
 
