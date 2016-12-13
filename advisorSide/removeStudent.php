@@ -10,7 +10,7 @@ $s_id = $_POST['s_id'];
 $sql = "UPDATE `students_basic_info` SET `appt_id` = 'NULL' where `id` = '$s_id'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-$sql = "UPDATE `advisor_appts` SET `num_students` = `num_students`-1 where `m_id` = '$m_id' and `num_students` > 0";
+$sql = "UPDATE `advisor_appts` SET `participants` = `participants`-1 where `m_id` = '$m_id' and `participants` > 0";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 ?>
