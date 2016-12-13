@@ -45,7 +45,7 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       if ($row['chem_bs'] == 1) { echo "Chemistry BS<br/>\n"; }
       if ($row['chemedu_ba'] == 1) { echo "Chemistry Education BA"; }
       echo "</td>\n";
-      echo "<td><form class='form-fill' action='removeStudentAppt.php' method='post' name='formEditMadeAppt'>\n";
+      echo "<td><form class='form-fill' action='removeStudent.php' method='post' name='formEditMadeAppt'>\n";
       echo "<input type='hidden' name='m_id' value='".$m_id."'>\n";
       echo "<input type='hidden' name='s_id' value='".$row['id']."'>\n";
       echo "<input class='edit-button' type='submit' value='Remove'>\n";
