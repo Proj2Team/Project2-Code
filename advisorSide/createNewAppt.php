@@ -10,18 +10,23 @@ date_default_timezone_set('EST');
 	<link rel="stylesheet" href="../styles.css" type="text/css">
 </head>
 <body>
-	<form action='processAppts.php' method='post' name='formEdit'>
-	  <fieldset class='group'>
-	    <legend><caption><label for='selectedDate'> Creating Appointment for <?php echo date("l Y-m-d", strtotime($date)); ?> </label></caption></legend>
+	<form class="center-form-large form-clean space-children-input text-center-input" action='processAppts.php' method='post' name='formEdit'>
+	    <h3 class="medium-title">Creating Appointment for <?php echo date("l Y-m-d", strtotime($date)); ?></h3>
 	    <input name='selectedDate' type='hidden' value='<?php echo $date; ?>'/>
-	    <span>Select Appointment Start Time (Hour:Minute AM/PM): </span><input type="time" name="start_time" placeholder="HR:MN AM/PM" required><br/>
-	    <span>Select Appointment End Time (Hour:Minute AM/PM): </span><input type="time" name="end_time" placeholder="HR:MN AM/PM" required><br/>
-	    <span>Number of Students Capacity (1-40): </span><input type="number" name="numStudents" min="1" max="40" value="1" required><br/>
-	    <span>Location (Optional): </span><input type="text" name="location"><br/>
-	    <span>Session Type: </span><br/>
-	    <input type="radio" name="session_type" value="Group" checked required> Group <br/>
-	    <input type="radio" name="session_type" value="Individul"> Individual <br/>
-	    <span>Session Leader: </span><br/>
+	    <span class="medium-header">Select Appointment Start Time (Hour:Minute AM/PM): </span><br/>
+	    <input type="time" name="start_time" placeholder="HR:MN AM/PM" required><br/>
+	    <span class="medium-header">Select Appointment End Time (Hour:Minute AM/PM): </span><br/>
+	    <input type="time" name="end_time" placeholder="HR:MN AM/PM" required><br/>
+	    <span class="medium-header">Number of Students Capacity (1-40): </span><br/>
+	    <input type="number" name="numStudents" min="1" max="40" value="1" required><br/>
+	    <span class="medium-header">Location (Optional): </span><br/>
+	    <input type="text" name="location"><br/>
+	    <span class="medium-header">Session Type: </span><br/>
+	    <div class="wrap-align-left-small">
+		    <input class="form-clean-disable" type="radio" name="session_type" value="Group" checked required> Group <br/>
+		    <input class="form-clean-disable" type="radio" name="session_type" value="Individul"> Individual <br/>
+	    </div>
+	    <span class="medium-header">Session Leader: </span><br/>
 	    <select name="session_leader">
 	      <?php
 	      	// Generate all options based on array of advisors, so that it is easily changed
@@ -37,9 +42,8 @@ date_default_timezone_set('EST');
 			<?php $i++;
 			}
 	      ?>
-	    </select><br/>
-	    <input class="button" type='submit' value='Save Appointments'>
-	  </fieldset><br/><br/>
+	    </select><br/><br/>
+	    <input class="button" type='submit' value='Save Appointments'><br/>
 	</form>
 	<form action='editAppts.php' method='post' name='formEdit'>
         <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>

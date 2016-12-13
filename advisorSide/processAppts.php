@@ -31,8 +31,6 @@ if ( isset($session_type) && isset($start_time) && isset($end_time) ) {
 
     $id = $row['0'];
 
-    // TODO: double booking scenario
-
     // TODO: if advisor selects individual appt, and selectes over 1 students, check validation somehow
     $query = "INSERT INTO `advisor_appts`(`m_id`, `a_id`, `date`, `start_time`, `end_time`, `num_students`, `participants`, `location`, `session_type`, `session_leader`) VALUES ('', '$id', '$date', '$start_time', '$end_time', '$numStudents', '0', '$location', '$session_type', '$session_leader')";
 

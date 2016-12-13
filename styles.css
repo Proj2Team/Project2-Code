@@ -71,6 +71,12 @@ To add styling to all input child input elements (that are type submit), add but
 	margin: 15px auto;
 }
 
+.small-title {
+	font-weight: 300;
+	font-size: 1.1em;
+	margin: 15px auto;
+}
+
 /* General code to make an input field bigger */
 
 .large-input {

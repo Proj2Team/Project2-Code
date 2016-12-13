@@ -15,11 +15,6 @@ if (isset($_POST['selectedDate'])) {
 }
 date_default_timezone_set('EST');
 
-// If processing appointment and appointment already exists, then go to updating appointment page
-// if ($_SESSION['apptExists'] == true) {
-//   header('Location: updateAppts.php');
-// }
-
 // Get id of advisor (user)
 $sql = "SELECT `id` FROM `advisor_info` WHERE `email` = '$email'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);

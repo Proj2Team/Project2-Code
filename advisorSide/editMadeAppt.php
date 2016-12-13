@@ -6,7 +6,6 @@ $COMMON = new Common($debug);
 
 // get all info based on passed in m_id to set as placeholder
 $m_id = $_POST['m_id'];
-//echo "$m_id";
 $sql = "SELECT * FROM `advisor_appts` WHERE `m_id` = '$m_id'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);
@@ -95,11 +94,25 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       </select><br/><br/>
       <input class="button" type='submit' value='Save Appointment'><br/>
     </form>
-    <?php getStudents($m_id); ?>
-    <form action='editAppts.php' method='post' name='formEdit'>
-        <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
-        <input class="button" type='submit' value='Back to Appointment View'>
-    </form>
+    <?php getStudents($m_id);
+    // If coming from processViewAppts.php
+    if (isset($_POST['from_view']) && $_POST['from_view'] == "myView") { ?>
+      <form action='processViewAppts.php' method='post' name='formEdit'>
+        <input type="hidden" name="myView" value="myView">
+        <input class="button" type='submit' value='Back to My Appointments'>
+      </form>
+    <?php } elseif (isset($_POST['from_view']) && $_POST['from_view'] == "allView") { ?>
+      <form action='processViewAppts.php' method='post' name='formEdit'>
+        <input class="button" type='submit' value='Back to All Appointments'>
+      </form>
+    <?php } else {
+    // If coming from editAppts.php
+    ?>
+      <form action='editAppts.php' method='post' name='formEdit'>
+          <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
+          <input class="button" type='submit' value='Back to Appointment View'>
+      </form>
+    <?php } ?>
     <form action="advisorHome.php" method="post" name="backHome">
       <input class="button" type='submit' value='Back to Dashboard'>
     </form>

@@ -26,6 +26,7 @@ $fname = $_SESSION['first'];
     <h2 class="big-title">Welcome, <?php echo "$fname";?></h2>
     <form class="button-parent" action='processAdvisorHome.php' method='post' name='advisorHome'>
       <input type='submit' name='next' value='Edit Appointments'><br/>
+      <input type='submit' name='next' value='View My Appointments'><br/>
       <input type='submit' name='next' value='View All Appointments'><br/>
       <input type='submit' name='next' value='Search Appointments'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>

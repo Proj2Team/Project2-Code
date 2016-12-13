@@ -9,25 +9,24 @@ $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 $email = $_SESSION['email'];
 
-//$date = $_POST['selectedDate'];
 date_default_timezone_set('EST');
-
-// Get id of advisor (user)
-// $sql = "SELECT `id` FROM `advisor_info` WHERE `email` = '$email'";
-// $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-// $row = mysql_fetch_row($rs);
-// $id = $row['0'];
 
 function getAllApptTimes() {
   global $debug; global $COMMON;
 
-  $sql = "SELECT * FROM `advisor_appts` ORDER BY `date` ASC, `start_time` ASC";
-  $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  if ( isset($_GET['myAppts']) || isset($_POST['myView'])) { // Trying to view only MY appointments
+    $a_id = $_SESSION['advisorID'];
+    $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$a_id' ORDER BY `date` ASC, `start_time` ASC";
+    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  } else { // Trying to view ALL appointments ever made
+    $sql = "SELECT * FROM `advisor_appts` ORDER BY `date` ASC, `start_time` ASC";
+    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  }
 
   // get student id that signed up for this advisor on this date -- save in array for multiples
 
   echo("<table class='table' border='1px'>");
-  echo("<tr><th>Session Leader</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th></tr>");
+  echo("<tr><th>Session Leader</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th>Edit</th></tr>");
   while ( $row = mysql_fetch_assoc($rs) ) {
     echo("<tr>\n");
       echo("<td>".$row['session_leader']."</td>\n");
@@ -40,6 +39,16 @@ function getAllApptTimes() {
       echo("<td>".$row['num_students']."</td>\n");
       echo("<td>".$row['participants']."</td>\n");
       echo ("<td>".$row['location']."</td>\n");
+      echo "<td><form class='form-fill' action='editMadeAppt.php' method='post' name='formEditMadeAppt'>\n";
+      echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
+      echo "<input type='hidden' name='from_view' value='";
+      if ( isset($_GET['myAppts']) ) { // Trying to view only MY appointments
+        echo "myView'>\n";
+      } else { // Trying to view ALL appointments ever made
+        echo "allView'>\n";
+      }
+      echo "<input class='edit-button' type='submit' value='Edit'>\n";
+      echo "</form></td>\n";
     echo("</tr>\n");
   }
   echo "</table>";
@@ -53,13 +62,9 @@ function getAllApptTimes() {
     <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
-    <h3 class="medium-title">Viewing All Appointments</h3>
+    <h3 class="medium-title">Viewing My Appointments</h3>
+    <h4 class="small-title">This shows all appointments ever made by me</h4>
     <?php getAllApptTimes(); ?>
-    <!-- <form action='processViewAppts.php' method='post' name='formEdit'>
-        <h3 class="medium-title"> Select another date to view: </h3>
-        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>' placeholder="YYYY-MM-DD"/><br/>
-        <input class="button" type='submit' value='Select Date'>
-    </form> -->
     <form action="advisorHome.php" method="post" name="backHome">
       <input class="button" type='submit' value='Back to Dashboard'>
     </form>

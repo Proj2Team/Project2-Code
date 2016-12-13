@@ -7,6 +7,9 @@ switch ($selectedOption)
   case "Edit Appointments":
     header('Location: pickDate.php');
     break;
+  case "View My Appointments":
+    header('Location: processViewAppts.php?myAppts=true');
+    break;
   case "View All Appointments":
     header('Location: processViewAppts.php');
     break;
