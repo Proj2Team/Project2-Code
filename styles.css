@@ -134,7 +134,33 @@ To add styling to all input child input elements (that are type submit), add but
     outline: none;
 }
 
-.form-clean input:focus {
+.form-clean-large input {
+	width: 65%;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 10px 5px 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.form-clean input:focus,
+.form-clean-large input:focus {
+	border-bottom: 2px solid #5A68FF;
+}
+
+/* To disable the effects on any inputs you don't want to have them used on */
+.form-clean input.form-clean-disable {
+	width: initial;
+    border: initial;
+    border-bottom: initial;
+    margin-bottom: initial;
+    padding: initial;
+    font-size: initial;
+    outline: initial;
+}
+
+.form-clean input.form-clean-disable:focus {
 	border-bottom: 2px solid #5A68FF;
 }
 
@@ -166,4 +192,23 @@ To add styling to all input child input elements (that are type submit), add but
 
 .wrap-align-left input {
 	width: 100%;
+}
+
+.wrap-align-left-small {
+	width: 8em;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/* Adds margin-bottom to all children input, including children of children etc. */
+
+.space-children-input input {
+	margin-bottom: 20px;
+	margin-top: 6px;
+}
+
+/* text aligns center all children inputs */
+
+.text-center-input input {
+	text-align: center;
 }
