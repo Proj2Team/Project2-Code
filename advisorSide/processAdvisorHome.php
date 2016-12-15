@@ -4,13 +4,13 @@ $selectedOption = $_POST['next'];
 
 switch ($selectedOption)
   {
-  case "Edit Appointments":
+  case "Edit/Create Appointments":
     header('Location: pickDate.php');
     break;
-  case "View My Appointments":
+  case "View My Upcoming Appointments":
     header('Location: processViewAppts.php?myAppts=true');
     break;
-  case "View All Appointments":
+  case "View All Upcoming Appointments":
     header('Location: processViewAppts.php');
     break;
   case "Search Appointments":

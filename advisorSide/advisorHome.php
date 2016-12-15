@@ -16,7 +16,7 @@ $fname = $_SESSION['first'];
     <link rel="stylesheet" href="../styles.css" type="text/css">
     <style type="text/css">
       .button-parent input {
-        width: 16em;
+        width: 20em;
       }
     </style>
   </head>
@@ -25,9 +25,9 @@ $fname = $_SESSION['first'];
 
     <h2 class="big-title">Welcome, <?php echo "$fname";?></h2>
     <form class="button-parent" action='processAdvisorHome.php' method='post' name='advisorHome'>
-      <input type='submit' name='next' value='Edit Appointments'><br/>
-      <input type='submit' name='next' value='View My Appointments'><br/>
-      <input type='submit' name='next' value='View All Appointments'><br/>
+      <input type='submit' name='next' value='Edit/Create Appointments'><br/>
+      <input type='submit' name='next' value='View My Upcoming Appointments'><br/>
+      <input type='submit' name='next' value='View All Upcoming Appointments'><br/>
       <input type='submit' name='next' value='Search Appointments'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>
       <input type='submit' name='next' value='Create New Advisor Account'><br/>

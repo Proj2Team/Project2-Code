@@ -9,21 +9,42 @@ $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 $email = $_SESSION['email'];
 
+$searchType = $_POST['next'];
+
 date_default_timezone_set('EST');
 
-function getAllApptTimes() {
-  global $debug; global $COMMON;
+function getApptTimes() {
+  global $debug; global $COMMON; global $searchType;
 
-  if ( isset($_GET['myAppts']) || isset($_POST['myView'])) { // Trying to view only MY appointments
+  if ($searchType == "My Upcoming Open")
+  {
     $a_id = $_SESSION['advisorID'];
-    $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$a_id' AND `date` >= CURDATE() ORDER BY `date` ASC, `start_time` ASC";
-    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-  } else { // Trying to view ALL upcoming appointments
-    $sql = "SELECT * FROM `advisor_appts` WHERE `date` >= CURDATE() ORDER BY `date` ASC, `start_time` ASC";
+    $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$a_id' AND `date` >= CURDATE() AND `participants` < `num_students` ORDER BY `date` ASC, `start_time` ASC";
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
   }
-
-  // get student id that signed up for this advisor on this date -- save in array for multiples
+  elseif ($searchType == "All Upcoming Open")
+  {
+    $a_id = $_SESSION['advisorID'];
+    $sql = "SELECT * FROM `advisor_appts` WHERE `date` >= CURDATE() AND `participants` < `num_students` ORDER BY `date` ASC, `start_time` ASC";
+    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  }
+  elseif ($searchType == "My Upcoming Closed")
+  {
+    $a_id = $_SESSION['advisorID'];
+    $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$a_id' AND `date` >= CURDATE() AND `participants` >= `num_students` ORDER BY `date` ASC, `start_time` ASC";
+    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  }
+  elseif ($searchType == "All Upcoming Closed")
+  {
+    $a_id = $_SESSION['advisorID'];
+    $sql = "SELECT * FROM `advisor_appts` WHERE `date` >= CURDATE() AND `participants` >= `num_students` ORDER BY `date` ASC, `start_time` ASC";
+    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  }
+  elseif ($searchType == "All Appointments (All Time)") {
+    $a_id = $_SESSION['advisorID'];
+    $sql = "SELECT * FROM `advisor_appts` ORDER BY `date` ASC, `start_time` ASC";
+    $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+  }
 
   echo("<table class='table' border='1px'>");
   echo("<tr><th>Session Leader</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th>Edit</th></tr>");
@@ -62,8 +83,11 @@ function getAllApptTimes() {
     <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
-    <h3 class="medium-title"><?php if ( isset($_GET['myAppts']) || isset($_POST['myView'])) { echo "Viewing My Upcoming Appointments"; } else { echo "Viewing All Upcoming Appointments"; }?></h3>
-    <?php getAllApptTimes(); ?>
+    <h3 class="medium-title">Viewing <?php echo $searchType; ?></h3>
+    <?php getApptTimes(); ?>
+    <form action='searchAppts.php' method='post' name='searchGroup'>
+      <input class="button" type='submit' value='Back to Appointment Search'>
+    </form>
     <form action="advisorHome.php" method="post" name="backHome">
       <input class="button" type='submit' value='Back to Dashboard'>
     </form>

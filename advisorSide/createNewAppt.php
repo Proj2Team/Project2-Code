@@ -43,7 +43,7 @@ date_default_timezone_set('EST');
 			}
 	      ?>
 	    </select><br/><br/>
-	    <input class="button" type='submit' value='Save Appointments'><br/>
+	    <input class="button" type='submit' value='Create Appointment'><br/>
 	</form>
 	<form action='editAppts.php' method='post' name='formEdit'>
         <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
