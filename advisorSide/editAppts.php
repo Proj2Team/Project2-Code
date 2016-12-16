@@ -47,7 +47,7 @@ function getApptTimes($id, $date) {
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
       echo "<input class='edit-button' type='submit' value='Edit'>\n";
       echo "</form></td>\n";
-      echo "<td><form class='form-fill' action='deleteAppt.php' method='post' name='formEditMadeAppt'>\n";
+      echo "<td><form class='form-fill' action='comfirmation.php' method='post' name='formEditMadeAppt'>\n";
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
       echo "<input class='edit-button' type='submit' value='Delete'>\n";
       echo "</form></td>\n";
