@@ -22,12 +22,10 @@ switch ($selectedOption)
   case "Create New Advisor Account":
     header('Location: advisorInfo.php');
     break;
-  #########
-  case "SHUT DOWN DATABASE":
-    header('Location: shutDown.pho');
+  case "Shut Down Database":
+    header('Location: shutDown.php');
     break;
-
-  case "ACTIVATE DATABASE":
+  case "Activate Database":
     header('Location: activate.php');
     break;
 

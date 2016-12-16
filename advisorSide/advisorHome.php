@@ -12,11 +12,11 @@ $sql = "select * from `isShutDown`";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_row($rs);
 $lock = $row['0'];
-$text = "";
+$database_option = "";
 if ($lock == 1){
-	$text = "SHUT DOWN DATABASE";
+	$database_option = "Shut Down Database";
 }else{
-	$text = "ACTIVATE DATABASE";
+	$database_option = "Activate Database";
 }
 ?>
 
@@ -42,7 +42,7 @@ if ($lock == 1){
       <input type='submit' name='next' value='Search Appointments'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>
       <input type='submit' name='next' value='Create New Advisor Account'><br/>
-      <input type='submit' name='next' value='<?php echo $text ?>'><br/>
+      <input type='submit' name='next' value='<?php echo $database_option ?>'><br/>
       <input type='submit' name='next' value='Logout'><br/>
     </form>
 
