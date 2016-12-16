@@ -62,7 +62,7 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
   </head>
   <body>
     <form class="center-form-large form-clean space-children-input text-center-input" action='processMadeAppt.php' method='post' name='formUpdateAppt'>
-      <h3 class="medium-title">Edit Appointment on <?php echo date("l F m, Y", strtotime($date)); ?></h3>
+      <h3 class="medium-title">Edit Appointment on <?php echo date("l F j, Y", strtotime($date)); ?></h3>
       <input type="hidden" name="m_id" value="<?php echo $m_id; ?>">
       <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
       <span class="medium-header">Select Appointment Start Time (Hour:Minute AM/PM): </span><br/>

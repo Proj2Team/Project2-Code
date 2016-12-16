@@ -11,7 +11,7 @@ date_default_timezone_set('EST');
 </head>
 <body>
 	<form class="center-form-large form-clean space-children-input text-center-input" action='processAppts.php' method='post' name='formEdit'>
-	    <h3 class="medium-title">Creating Appointment for <?php echo date("l Y-m-d", strtotime($date)); ?></h3>
+	    <h3 class="medium-title">Creating Appointment for <?php echo date("l F j, Y", strtotime($date)); ?></h3>
 	    <input name='selectedDate' type='hidden' value='<?php echo $date; ?>'/>
 	    <span class="medium-header">Select Appointment Start Time (Hour:Minute AM/PM): </span><br/>
 	    <input type="time" name="start_time" placeholder="HR:MN AM/PM" required><br/>

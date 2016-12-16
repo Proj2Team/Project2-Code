@@ -21,7 +21,7 @@ $participants = $row['participants'];
   </head>
 
   <body>
-    <h3 class="medium-title"><?php echo "Are you sure to want to delete the meeting on " . date("l F m, Y", strtotime($date)) . ", from " . date("h:i A", strtotime($start_time)) . " to " . date("h:i A", strtotime($end_time)) . "?"; ?></h3>
+    <h3 class="medium-title"><?php echo "Are you sure to want to delete the meeting on " . date("l F j, Y", strtotime($date)) . ", from " . date("h:i A", strtotime($start_time)) . " to " . date("h:i A", strtotime($end_time)) . "?"; ?></h3>
     <?php if ($participants > 0) : // If there are students, set warning ?>
       <h3 class="medium-title" style="color: red;">Warning, this meeting has <?php echo $participants; ?> students signed up for it. Deleting the appointment will kick all of these students out.</h3>
     <?php endif ?>

@@ -68,11 +68,22 @@ function getApptTimes($id, $date) {
       <input type="hidden" name="date" value="<?php echo $date; ?>">
       <input class="button" type="submit" value="Create New Appointment">
     </form>
-    <h3 class="medium-title">Viewing My Appointments for <?php echo date("l F m, Y", strtotime($date)); ?></h3>
-    <?php getApptTimes($id, $date); ?>
+    <?php if (isset($_POST['weekView'])) { // weekly view
+      $datecopy = $date; // To not affect original date variable
+      for ($i = 0; $i < 6; $i++) {
+        echo "<h3 class='medium-title'> " . date("l F j, Y", strtotime($datecopy)) . "</h3>\n";
+        getApptTimes($id, $datecopy);
+        $datecopy = date('Y-m-d', strtotime($datecopy. ' + 1 day'));
+        echo "<br/><br/>\n";
+      }
+    } else {
+      echo "<h3 class='medium-title'>Viewing My Appointments for " . date("l F j, Y", strtotime($date)) . "</h3>\n";
+      getApptTimes($id, $date);
+    } ?>
     <form action='editAppts.php' method='post' name='formEdit'>
         <h3 class="medium-title"> Select another date to view: </h3>
-        <input class="large-input" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>' placeholder="YYYY-MM-DD"/><br/>
+        <input class="large-input" style="margin-bottom: 0.8em;" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>' placeholder="YYYY-MM-DD"/><br/>
+        <input class="large-input" type="checkbox" name="weekView" value="week"><span>Weekly View</span><br/>
         <input class="button" type='submit' value='Select Date'>
     </form>
     <form action="advisorHome.php" method="post" name="backHome">
