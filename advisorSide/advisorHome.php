@@ -7,6 +7,17 @@ $COMMON = new Common($debug);
 $_SESSION['confirmedPass'] = false;
 $_SESSION['apptExists'] = false;
 $fname = $_SESSION['first'];
+
+$sql = "select * from `isShutDown`";
+$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+$row = mysql_fetch_row($rs);
+$lock = $row['0'];
+$text = "";
+if ($lock == 1){
+	$text = "SHUT DOWN DATABASE";
+}else{
+	$text = "ACTIVATE DATABASE";
+}
 ?>
 
 
@@ -31,6 +42,7 @@ $fname = $_SESSION['first'];
       <input type='submit' name='next' value='Search Appointments'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>
       <input type='submit' name='next' value='Create New Advisor Account'><br/>
+      <input type='submit' name='next' value='<?php echo $text ?>'><br/>
       <input type='submit' name='next' value='Logout'><br/>
     </form>
 
