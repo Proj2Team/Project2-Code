@@ -24,10 +24,10 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
   </head>
   <body>
   	<h3 class="medium-title">Appointment is Deleted</h3>
-	<form action='editAppts.php' method='post' name='formEdit'>
-		<input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
-		<input class="button" type='submit' value='Back to Appointment View'>
-	</form>
+  	<form action='editAppts.php' method='post' name='formEdit'>
+  		<input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
+  		<input class="button" type='submit' value='Back to Appointment View'>
+  	</form>
     <form action="advisorHome.php" method="post" name="backHome">
       <input class="button" type='submit' value='Back to Dashboard'>
     </form>
