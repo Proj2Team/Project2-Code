@@ -68,7 +68,7 @@ function getApptTimes($id, $date) {
       <input type="hidden" name="date" value="<?php echo $date; ?>">
       <input class="button" type="submit" value="Create New Appointment">
     </form>
-    <h3 class="medium-title">Viewing Appointments for <?php echo date("l F m, Y", strtotime($date)); ?></h3>
+    <h3 class="medium-title">Viewing My Appointments for <?php echo date("l F m, Y", strtotime($date)); ?></h3>
     <?php getApptTimes($id, $date); ?>
     <form action='editAppts.php' method='post' name='formEdit'>
         <h3 class="medium-title"> Select another date to view: </h3>
