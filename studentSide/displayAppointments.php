@@ -67,15 +67,17 @@ else{
 $rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);
 
+echo("<table class='table'>");
 if($row == '') 
 {
 //display message if no meetings found that fit search criteria
-   echo("No meetings found!");
+   echo("<tr><td>No meetings found!</td></tr>");
 }
 
 while($row)
 {
 //else, display relevant information about appointment
+	echo('<tr><td>');
 	echo('Day and Time: ' . $row['date'] .' ' . $row['start_time'] . '-' . $row['end_time'] . '<br>');
 	echo('Advisor: ' . $row['session_leader'] . '<br>');
 
@@ -88,19 +90,20 @@ while($row)
 //only give sign up button if student does not currently have a meeting they signed up for
 if($signup){
 
-	echo('<form action=\'meetingAdd.php\' method=\'post\'>');
+echo('<form action=\'meetingAdd.php\' method=\'post\'>');
   echo('<input name = \'meeting\' type = \'hidden\' value = \'' . $row['m_id'] . '\'>');
   echo('<input name = \'Sign Up\' type = \'submit\' value =\'Sign Up\'>');
   echo('</form>');
   echo('<p>');
 }
 
+
 	echo('<p>');
-
+	echo("</tr></td>");
 	$row = mysql_fetch_assoc($rs);
-
+	
 }
-
+echo("</table>");
 echo('<form action=\'searchAppointments.php\' method=\'post\'>');
 echo('<input type=\'submit\' value=\'Back\'>');
 echo('</form>');

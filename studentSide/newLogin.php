@@ -5,8 +5,9 @@ session_start();
 <html>
 <head>
 <title>Student: Log in</title>
+<link rel="stylesheet" href="../styles.css" type="text/css">
 </head>
-<body>
+<body id=student>
 
 <?php
 $_SESSION['studentExists'] = false;

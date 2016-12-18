@@ -4,8 +4,9 @@ session_start();
 <html>
 <head>
 <title>Student: Create an Account</title>
+<link rel="stylesheet" href="../styles.css" type="text/css">
 </head>
-<body>
+<body id='student'>
 
 <?php
 if($_SESSION['confirmedPass'] == true)
@@ -25,7 +26,7 @@ if($_SESSION['umbcEmail'] == true)
 
 <!-- CHANGES BY KHADIJAH: neatened up formatting and added preferred name (following description) -->
 
-<form action='createStudent.php' method='post'>
+<form class="center-form form-clean space-children-input text-center-input" action='createStudent.php' method='post'>
 
   *First Name:<br> <input type='varchar' size='25' maxlength='40' name='fname' required><p>
 
@@ -51,6 +52,7 @@ if($_SESSION['umbcEmail'] == true)
   <option value='chem_ba'>Chemistry BA</option>
   <option value='chem_bs'>Chemistry BS</option>
   <option value='chemedu_ba'>Chemistry Education BA</option>
+  <option value='other'>Other</option>
   </select><p>
 
 

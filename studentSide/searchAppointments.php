@@ -8,10 +8,10 @@ $COMMON = new Common($debug);
 <head>
 <!--added title and linked to css-->
 <title>Search Appointments</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css" type="text/css">
 
 </head>
-<body>
+<body id=student>
 <form action='displayAppointments.php' method='post'>
 <!-- UMBC ID: <input type='text' value='umbc_ID'> --> <!--Is this really necessary???-->
 <br><br>

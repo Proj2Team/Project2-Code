@@ -8,7 +8,9 @@ $COMMON = new Common($debug);
 <html>
 <head>
 <title>Student Homepage</title>
-<style>
+<link rel="stylesheet" href="../styles.css" type="text/css">
+
+<!--<style>
 input[type=submit]{
   background-color: #ffcc00;
   border: none;
@@ -17,9 +19,9 @@ input[type=submit]{
   margin: 4px 2px;
   text-transform: uppercase;
  }
-</style>
+</style>-->
 </head>
-<body>
+<body id ='student' class="center-form-large form-clean space-children-input text-center-input">
 <!-- EDITS BY KHADIJAH: edit so it prints out the student's name as a header. It will print out-->
 <!-- preferred name if they have one, but if not it prints out their first name -->
 

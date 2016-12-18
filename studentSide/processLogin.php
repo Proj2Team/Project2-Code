@@ -32,6 +32,7 @@ if($row)
     $_SESSION['pref'] = $pref;
     $_SESSION['umbc_ID'] = $umbc_ID;
     $_SESSION['email'] = $email;
+	
     header('Location: homescreen.php');
   }
 else

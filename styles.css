@@ -1,10 +1,17 @@
 /* stylings for entire site */
+/*changing from advisor to student: add id = student*/
 
 body {
 	font-family: helvetica, sans-serif;
 	text-align: center;
 	margin-top: 2.5em;
 }
+
+body[id=student]{
+	/*background image on student side*/
+	background-image: "http://styleguide.umbc.edu/files/2014/05/UMBCretrievers_LOGO.jpg";
+}
+
 
 
 /*

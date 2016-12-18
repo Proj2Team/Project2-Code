@@ -10,8 +10,9 @@ session_start();
 <html>
 <head>
 <title>Student: Edit Information</title>
+<link rel="stylesheet" href="../styles.css" type="text/css">
 </head>
-<body>
+<body id=student>
 
 <?php
 if($_SESSION['confirmedPass'] == true)

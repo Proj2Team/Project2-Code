@@ -12,10 +12,22 @@ $first = $_POST['fname'];
 $last = $_POST['lname'];
 $pref = $_POST['pname'];
 $umbc_ID = $_POST['umbc_ID'];
+$pass = $_POST['password'];
 $email = $_POST['email'];
 
+/*Not needed
+$encrypted_pass = md5($pass);
+$majors = $_POST['majors'];
+$_SESSION['studentExists'] = false;
+$_SESSION['confirmedPass'] = false;
+$_SESSION['confirmedNewPass'] = false;
+$_SESSION['umbcEmail'] = false;
+*/
+
 #Emails
-$CNMSEMAIL = "cnmsadvising@umbc.edu";
+#$CNMSEMAIL = "cnmsadvising@umbc.edu";
+#testing...
+$CNMSEMAIL = "syake1@umbc.edu";
 $studentEmail = $email;
 $advisorEmail;
 
@@ -30,19 +42,21 @@ $day;
 $time;
 $meetingID;
 $advisorID;
+$apptID;
+$sleader;
 
 $subject = "Meeting Cancellation Pending";
 $message = "";
 
-# Assuming student exists, find student
-$sql = "SELECT * FROM `students_basic_info` WHERE `umbc_ID` = '$umbc_ID'";
+# get meeting id
+$sql = "SELECT appt_id FROM `students_basic_info` WHERE `umbc_ID` = '$umbc_ID'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-$studentRow = mysql_fetch_row($rs);
+$apptID = mysql_fetch_object($rs);
 
-#find meeting id
-$sql = "SELECT * FROM `advisor_appts` WHERE `m_id` = '$meetingID'";
+# get session leader
+$sql = "SELECT session_leader FROM `advisor_appts` WHERE `m_id` = '$apptID'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-$meetingRow = mysql_fetch_row($rs);
+$sleader = mysql_fetch_object($rs);
 
 #get meeting info
 
