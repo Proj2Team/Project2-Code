@@ -8,10 +8,10 @@ $COMMON = new Common($debug);
 $m_id = $_POST['m_id'];
 $date = $_POST['date'];
 
-$sql = "select `fname`, `lname`, `umbc_ID`, `date`, `start_time`, `end_time`
-from `students_basic_info`
-join `advisor_appts`
-on `appt_id` = `m_id`
+$sql = "select `fname`, `lname`, `umbc_ID`, `date`, `start_time`, `end_time` 
+from `students_basic_info` 
+join `advisor_appts` 
+on `appt_id` = `m_id` 
 where `m_id` = '$m_id'";
 
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
@@ -34,13 +34,13 @@ echo("</table>");
 <html>
  <head>
     <link rel="stylesheet" href="../styles.css" type="text/css">
-  </head>
+  </head>  
   <body>
     <button class= 'button'  onclick="printTable()">Print this table</button>
       <script>
         function printTable() {
          window.print();
-      }
+      } 
       </script>
 
    </form>
