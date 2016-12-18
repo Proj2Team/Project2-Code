@@ -84,7 +84,7 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       <div class="wrap-align-left-small">
         <input class="form-clean-disable" type="radio" name="can_signup" value="true"<?php if ($can_signup == 1) { echo " checked"; } ?> required> Yes <br/>
         <input class="form-clean-disable" type="radio" name="can_signup" value="false"<?php if ($can_signup == 0) { echo " checked"; } ?>> No <br/>
-      </div>
+      </div><br/>
       <span class="medium-header">Session Leader: </span><br/>
       <select name="session_leader">
         <?php
