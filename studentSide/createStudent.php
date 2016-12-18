@@ -6,8 +6,11 @@ $debug = true;
 $COMMON = new Common($debug);
 
 $first = $_POST['fname'];
+$first = ucfirst($first);
 $last = $_POST['lname'];
+$last = ucfirst($last);
 $pref = $_POST['pname'];
+$pref = ucfirst($pref);
 $umbc_ID = $_POST['umbc_ID'];
 $pass = $_POST['password'];
 $encrypted_pass = md5($pass);
@@ -72,13 +75,20 @@ else
 
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
+//fetch recently created student
+$sql = "SELECT * FROM `students_basic_info` WHERE `umbc_ID` = '$umbc_ID' AND `lname` = '$last' AND `fname` = '$first'";
+$rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
+
+$row = mysql_fetch_row($rs);
+
 //CHANGES BY KHADIJAH: createStudent now adds more than just the umbc_ID to the session
     $_SESSION['last'] = $last;
     $_SESSION['first'] = $first;
     $_SESSION['pref'] = $pref;
     $_SESSION['umbc_ID'] = $umbc_ID;
+    $_SESSION['studentID'] = $row['0'];
     $_SESSION['email'] = $email;
     $_SESSION['password'] = $pass;
-    header('Location: homescreen.php');
+   header('Location: homescreen.php');
   }
 ?>

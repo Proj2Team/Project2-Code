@@ -8,12 +8,22 @@
 session_start();
 include('CommonMethods.php');
 
+
+//by some error there is no user logged in, redirect
+if(!isset($_SESSION['studentID']))
+{
+	header('Location: newLogin.php');
+}
+
 $debug = false;
 $COMMON = new Common($debug);
 
 $first = $_POST['fname'];
+$first = ucfirst($first);
 $last = $_POST['lname'];
+$last = ucfirst($last);
 $pref = $_POST['pname'];
+$pref = ucfirst($pref);
 $pass = $_POST['password'];
 $encrypted_pass = md5($pass);
 
