@@ -23,7 +23,7 @@ function getAllStudents($searchType) {
   echo("<tr><th>UMBC ID</th><th>First Name</th><th>Last Name</th><th>Preferred Name</th><th>Email</th><th>Major(s)</th><th>Appointment</th>");
   while ( $row = mysql_fetch_assoc($rs) ) {
     echo("<tr>\n");
-      echo("<td>".$row['umbc_ID']."</td>\n");
+      echo("<td>".strtoupper($row['umbc_ID'])."</td>\n");
       echo("<td>".$row['fname']."</td>\n");
       echo("<td>".$row['lname']."</td>\n");
       echo("<td>".$row['pname']."</td>\n");
