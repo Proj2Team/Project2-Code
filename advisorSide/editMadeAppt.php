@@ -34,7 +34,7 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       echo("<td>".$row['pname']."</td>\n");
       echo("<td>".$row['email']."</td>\n");
       echo ("<td>".$row['umbc_ID']."</td>\n");
-      echo "<td>";
+      echo "<td>\n";
       if ($row['bio_ba'] == 1) { echo "Biological Sciences BA<br/>\n"; }
       if ($row['bio_bs'] == 1) { echo "Biological Sciences BS<br/>\n"; }
       if ($row['biochem_bs'] == 1) { echo "Biochemistry & Molecular Biology BS<br/>\n"; }
@@ -64,6 +64,7 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
     <form class="center-form-large form-clean space-children-input text-center-input" action='processMadeAppt.php' method='post' name='formUpdateAppt'>
       <h3 class="medium-title">Edit Appointment on <?php echo date("l F j, Y", strtotime($date)); ?></h3>
       <input type="hidden" name="m_id" value="<?php echo $m_id; ?>">
+      <input type="hidden" name="participants" value="<?php echo $participants; ?>">
       <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
       <span class="medium-header">Select Appointment Start Time (Hour:Minute AM/PM): </span><br/>
       <input type="text" name="start_time" value="<?php echo date("h:i A", strtotime($start_time)); ?>" placeholder="HR:MN AM/PM" required><br/>
@@ -92,6 +93,8 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
         <?php $i++;
         } ?>
       </select><br/><br/>
+      <!-- If from view is set, pass it, otherwise, coming from editAppts.php -->
+      <input type="hidden" name="from_view" value="<?php if (isset($_POST['from_view'])) { echo $_POST['from_view']; } else { echo "editAppts"; } ?>">
       <input class="button" type='submit' value='Save Appointment'><br/>
     </form>
     <?php getStudents($m_id);
@@ -103,6 +106,11 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       </form>
     <?php } elseif (isset($_POST['from_view']) && $_POST['from_view'] == "allView") { ?>
       <form action='processViewAppts.php' method='post' name='formEdit'>
+        <input class="button" type='submit' value='Back to All Appointments'>
+      </form>
+    <?php } elseif (isset($_POST['from_view']) && $_POST['from_view'] == "manageView") { ?>
+      <form action='processStudentFilter.php' method='post' name='formEdit'>
+        <input type='hidden' name='searchType' value='Any Advisor'>
         <input class="button" type='submit' value='Back to All Appointments'>
       </form>
     <?php } else {

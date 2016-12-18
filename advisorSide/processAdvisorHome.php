@@ -16,6 +16,9 @@ switch ($selectedOption)
   case "Search Appointments":
     header('Location: searchAppts.php');
     break;
+  case "Manage Students":
+    header('Location: manageStudents.php');
+    break;
   case "Edit Your Account Info":
     header('Location: editAdvisorInfo.php');
     break;

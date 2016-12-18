@@ -18,8 +18,8 @@ date_default_timezone_set('EST');
 // Get id of advisor (user)
 $sql = "SELECT `id` FROM `advisor_info` WHERE `email` = '$email'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
-$row = mysql_fetch_row($rs);
-$id = $row['0'];
+$row = mysql_fetch_assoc($rs);
+$id = $row['id'];
 
 // Get all appointments of the date and this advisor, and display them
 function getApptTimes($id, $date) {
@@ -70,7 +70,7 @@ function getApptTimes($id, $date) {
     </form>
     <?php if (isset($_POST['weekView'])) { // weekly view
       $datecopy = $date; // To not affect original date variable
-      for ($i = 0; $i < 6; $i++) {
+      for ($i = 0; $i < 7; $i++) {
         echo "<h3 class='medium-title'> " . date("l F j, Y", strtotime($datecopy)) . "</h3>\n";
         getApptTimes($id, $datecopy);
         $datecopy = date('Y-m-d', strtotime($datecopy. ' + 1 day'));

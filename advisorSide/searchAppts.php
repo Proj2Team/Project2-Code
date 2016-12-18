@@ -12,7 +12,7 @@ session_start();
 		</style>
 	</head>
 	<body>
-		<h3 class="medium-title">How would you like to filter your appointment search?</h2>
+		<h3 class="medium-title">How would you like to filter your appointment search?</h3>
 	    <form class="button-parent" action='processSearch.php' method='post' name='searchGroup'>
 			<input type='submit' name='next' value='My Upcoming Open'><br/>
 			<input type='submit' name='next' value='All Upcoming Open'><br/>

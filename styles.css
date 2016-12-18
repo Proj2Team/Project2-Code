@@ -3,6 +3,7 @@
 body {
 	font-family: helvetica, sans-serif;
 	text-align: center;
+	margin-top: 2.5em;
 }
 
 
@@ -130,6 +131,8 @@ To add styling to all input child input elements (that are type submit), add but
 /* For fancy input boxes and stuff, add form-clean class to form element */
 /* Suggested: Apply span's with class small-header and have them above inputs */
 
+/* To apply clean look to just a text inputs, add clean-text-input class to input */
+
 .form-clean input {
 	width: 50%;
     border: none;
@@ -140,7 +143,8 @@ To add styling to all input child input elements (that are type submit), add but
     outline: none;
 }
 
-.form-clean-large input {
+.form-clean-large input,
+.clean-text-input {
 	width: 65%;
     border: none;
     border-bottom: 1px solid gray;
@@ -151,7 +155,8 @@ To add styling to all input child input elements (that are type submit), add but
 }
 
 .form-clean input:focus,
-.form-clean-large input:focus {
+.form-clean-large input:focus,
+.clean-text-input:focus {
 	border-bottom: 2px solid #5A68FF;
 }
 

@@ -14,7 +14,7 @@ session_start();
   $_SESSION['confirmedPass'] = false;
   ?>
 
-    <form action='processLogin.php' method='post' name='AdvisorLogin'>
+    <form class="center-form form-clean space-children-input text-center-input" action='processLogin.php' method='post' name='AdvisorLogin'>
       <div class='field'>
         <label for='email'>UMBC Email:</label><br/>
         <input id='email' type='text' size='25' maxlength='50' name='email' required><br/>

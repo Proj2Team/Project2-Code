@@ -42,7 +42,7 @@ function getAllApptTimes() {
       echo "<td><form class='form-fill' action='editMadeAppt.php' method='post' name='formEditMadeAppt'>\n";
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
       echo "<input type='hidden' name='from_view' value='";
-      if ( isset($_GET['myAppts']) ) { // Trying to view only MY appointments
+      if ( isset($_GET['myAppts']) || isset($_POST['myView']) ) { // Trying to view only MY appointments
         echo "myView'>\n";
       } else { // Trying to view ALL appointments ever made
         echo "allView'>\n";

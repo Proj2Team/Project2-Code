@@ -12,7 +12,7 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);
 $date = $row['date'];
 
-$sql = "UPDATE `students_basic_info` SET `appt_id` = 'NULL' WHERE `appt_id` = '$m_id'";
+$sql = "UPDATE `students_basic_info` SET `appt_id` = NULL WHERE `appt_id` = '$m_id'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $sql = "DELETE FROM `advisor_appts` WHERE `m_id` = '$m_id'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);

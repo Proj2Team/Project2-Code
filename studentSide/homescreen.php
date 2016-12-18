@@ -8,46 +8,54 @@ $COMMON = new Common($debug);
 <html>
 <head>
 <title>Student Homepage</title>
-
+<style>
+input[type=submit]{
+  background-color: #ffcc00;
+  border: none;
+  color: #000000;
+  text-decoration: none;
+  margin: 4px 2px;
+  text-transform: uppercase;
+ }
+</style>
+</head>
+<body>
 <!-- EDITS BY KHADIJAH: edit so it prints out the student's name as a header. It will print out-->
 <!-- preferred name if they have one, but if not it prints out their first name -->
 
-<h1>
-Welcome 
+<h1>Welcome
 <?php
-
-if($_SESSION['pref'] != '')
+if ($_SESSION['pref'] != '')
 {
-  echo($_SESSION['pref']);
+	echo($_SESSION['pref']);
 }
-elseif($_SESSION['first'] != '')
+elseif ($_SESSION['first'] != '')
 {
-echo($_SESSION['first']);
+	echo($_SESSION['first']);
 }
-else{
+else {
 	//checks to see if there's a student at all! If not redirects to login page
    header('Location: newLogin.php');
 }
  echo('!');
-echo('</h1>');
+echo('</h1>\n');
 
  echo('<p>');
-
-$sql = "SELECT * FROM students_basic_info WHERE `id` = $_SESSION[studentID]";
-
+$s_id = $_SESSION['studentID'];
+$sql = "SELECT * FROM `students_basic_info` WHERE `id` = '$s_id'";
 $rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);
 
-//by some error there is no user logged in, redirect
-if(!$row)
+// by some error there is no user logged in, redirect
+if (!$row)
 {
 	header('Location: newLogin.php');
 }
 
-//display message according to whether or not they have signed up for a meeting
-if($row['appt_id'] == '') 
+// display message according to whether or not they have signed up for a meeting
+if ($row['appt_id'] == '')
 {
-   echo("You have not yet signed up for a meeting");
+   echo("You have not yet signed up for a meeting</p>\n");
 }
 else{
 
@@ -75,26 +83,7 @@ echo('<input type=\'submit\' name=\'cancel\' value=\'Cancel Meeting\'><p>');
 echo('</form>');
 
 }
-
-
 ?>
-
-
-
-
-<style>
-input[type=submit]{
-  background-color: #ffcc00;
-  border: none;
-  color: #000000;
-  text-decoration: none;
-  margin: 4px 2px;
-  text-transform: uppercase;
- }
-</style>
-</head>
-<body>
-
 
 <form action='searchAppointments.php' method='post' name='studentHome'>
 <input type='submit' name='next' value="Search for An Appointment"><p>

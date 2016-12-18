@@ -20,7 +20,18 @@ $session_leader = $_POST['session_leader'];
 $sql = "UPDATE `advisor_appts` SET `date` = '$date', `start_time` = '$start_time', `end_time` = '$end_time', `num_students` = '$num_students', `participants` = '$participants', `location` = '$location', `session_type` = '$session_type', `session_leader` = '$session_leader' WHERE `m_id` = '$m_id'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-$headerLocation = 'Location: editAppts.php?selectedDate=' . $date;
+// Now choose where to go
+$from_view = $_POST['from_view'];
+if ($from_view == "myView") { // Viewing all my appointments
+	$headerLocation = 'Location: processViewAppts.php?myAppts=true';
+} elseif ($from_view == "allView") { // Viewing all appointments
+	$headerLocation = 'Location: processViewAppts.php';
+} elseif ($from_view == "manageView") { // From manage filter
+	$headerLocation = 'Location: manageStudents.php';
+} elseif ($from_view == "editAppts") {
+	$headerLocation = 'Location: editAppts.php?selectedDate=' . $date;
+}
+
 header($headerLocation);
 
 ?>

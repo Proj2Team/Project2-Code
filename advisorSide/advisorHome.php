@@ -40,6 +40,7 @@ if ($lock == 1){
       <input type='submit' name='next' value='View My Upcoming Appointments'><br/>
       <input type='submit' name='next' value='View All Upcoming Appointments'><br/>
       <input type='submit' name='next' value='Search Appointments'><br/>
+      <input type='submit' name='next' value='Manage Students'><br/>
       <input type='submit' name='next' value='Edit Your Account Info'><br/>
       <input type='submit' name='next' value='Create New Advisor Account'><br/>
       <input type='submit' name='next' value='<?php echo $database_option ?>'><br/>
