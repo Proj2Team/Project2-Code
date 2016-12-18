@@ -11,6 +11,8 @@ $email = $_SESSION['email'];
 
 date_default_timezone_set('EST');
 
+$today = date("Y-m-d");
+
 function getAllApptTimes() {
   global $debug; global $COMMON;
 
@@ -23,8 +25,10 @@ function getAllApptTimes() {
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
   }
 
+  // get student id that signed up for this advisor on this date -- save in array for multiples
+
   echo("<table class='table' border='1px'>");
-  echo("<tr><th>Session Leader</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th>Open for Signup</th><th></th><th></th></tr>");
+  echo("<tr><th>Session Leader</th><th>Date</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th>Edit</th><th>Delete</th></tr>");
   while ( $row = mysql_fetch_assoc($rs) ) {
     echo("<tr>\n");
       echo("<td>".$row['session_leader']."</td>\n");
@@ -37,9 +41,6 @@ function getAllApptTimes() {
       echo("<td>".$row['num_students']."</td>\n");
       echo("<td>".$row['participants']."</td>\n");
       echo ("<td>".$row['location']."</td>\n");
-      if ($row['available_for_signup'] == 1) { $open_status = "Open";}
-      else {$open_status = "Closed";}
-      echo ("<td>".$open_status."</td>\n");
       echo "<td><form class='form-fill' action='editMadeAppt.php' method='post' name='formEditMadeAppt'>\n";
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
       echo "<input type='hidden' name='from_view' value='";
@@ -55,7 +56,8 @@ function getAllApptTimes() {
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
       echo "<input type='hidden' name='page' value='upcoming'>\n";
       echo "<input class='edit-button' type='submit' value='Delete'>\n";
-      echo "</form></td>\n";
+      echo "</form></td>\n";	
+      
     echo("</tr>\n");
   }
   echo "</table>";
@@ -71,6 +73,18 @@ function getAllApptTimes() {
   <body>
     <h3 class="medium-title"><?php if ( isset($_GET['myAppts']) || isset($_POST['myView'])) { echo "Viewing My Upcoming Appointments"; } else { echo "Viewing All Upcoming Appointments"; }?></h3>
     <?php getAllApptTimes(); ?>
+
+    <?php if ( isset($_GET['myAppts']) || isset($_POST['myView'])): ?>
+       <form action="printSession_S.php" method="post" name="print">
+        <input class="button" type='submit' value='Print All Appointments'>
+	<input type='hidden' name='a_id' value='<?php echo $_SESSION['advisorID']; ?>'>
+       </form>
+     <?php else :?>
+       <form action="printAll.php" method="post" name="print">
+        <input class="button" type='submit' value='Print All Appointments'>
+       </form>
+     <?php endif ?>
+
     <form action="advisorHome.php" method="post" name="backHome">
       <input class="button" type='submit' value='Back to Dashboard'>
     </form>
