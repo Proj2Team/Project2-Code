@@ -5,7 +5,7 @@ include('../studentSide/CommonMethods.php');
 
 $COMMON = new Common($debug);
 
-$sql = "UPDATE `isShutDown` SET `swtich`= 0";
+$sql = "UPDATE `isShutDown` SET `switch`= 0";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 header('Location: advisorHome.php');

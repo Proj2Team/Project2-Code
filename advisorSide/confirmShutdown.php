@@ -12,7 +12,7 @@ session_start();
     <h4 class="medium-title"><span style="color: red;">This will remove ability for students to sign up for appointments.</span></h4>
     <h4 class="small-title">Students are still able to view information about their appointments. Advisor functionality will not change.</h4>
     <h4 class="small-title">This is <b>reversible</b>, if you change your mind later.</h4>
-    <form action="shutdown.php" method="post" name="delete">
+    <form action="shutDown.php" method="post" name="delete">
       <input class="button" type='submit' value='Yes, shut down advising.'>
     </form>
 

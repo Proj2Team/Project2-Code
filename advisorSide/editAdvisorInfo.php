@@ -32,7 +32,7 @@ session_start();
         <input type='email' size='25' maxlength='50' name='email' value="<?php echo $_SESSION['email']; ?>" required><br/><br/>
       </div>
       <span class="medium-header">Select Majors to Advise: (Hold control and click to select multiple)</span><br/><br/>
-      <select class="medium-select" name='majors[]' multiple='multiple'>
+      <select class="medium-select" name='majors[]' multiple='multiple' required>
         <option value='bsci_BA'>Biological Sciences BA</option>
         <option value='bsci_BS'>Biological Sciences BS</option>
         <option value='bchem_BS'>Biochemistry & Molecular Biology BS</option>
