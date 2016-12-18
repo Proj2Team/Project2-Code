@@ -13,6 +13,8 @@ $date = $row['date'];
 $start_time = $row['start_time'];
 $end_time = $row['end_time'];
 $participants = $row['participants'];
+
+$page = $_POST['page'];
 ?>
 
 <html>
@@ -29,9 +31,18 @@ $participants = $row['participants'];
       <input type='hidden' name='m_id' value='<?php echo $m_id; ?>'>
       <input class="button" type='submit' value='Yes'>
     </form>
+
+    <?php if ($page == "edit"):?>	
     <form action='editAppts.php' method='post' name='formEdit'>
       <input id='selectedDate' type='hidden' name='selectedDate' value='<?php echo $date; ?>'/>
       <input class="button" type='submit' value='Just kidding!'>
     </form>
+
+    <?php elseif ($page == "upcoming"):?>
+    <form action='processViewAppts.php' method='post' name='formEdit'>
+      <input id='myView' type='hidden' name='myView' value='myView'/>
+      <input class="button" type='submit' value='Just kidding!'>
+    </form>
+    <?php endif ?> 
   </body>
 </html>

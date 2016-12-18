@@ -31,7 +31,7 @@ function getApptTimes($id, $date) {
   // get student id that signed up for this advisor on this date -- save in array for multiples
 
   echo("<table class='table' border='1px'>");
-  echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th></th><th></th></tr>");
+  echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th></th><th></th><th></th></tr>");
   while ( $row = mysql_fetch_assoc($rs) ) {
     echo("<tr>\n");
       echo("<td>".$row['session_leader']."</td>\n");
@@ -49,8 +49,17 @@ function getApptTimes($id, $date) {
       echo "</form></td>\n";
       echo "<td><form class='form-fill' action='comfirmation.php' method='post' name='formEditMadeAppt'>\n";
       echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
+      echo "<input type='hidden' name='page' value='edit'>\n";
       echo "<input class='edit-button' type='submit' value='Delete'>\n";
       echo "</form></td>\n";
+
+      echo "<td><form class='form-fill' action='printSession.php' method='post' name='formEditMadeAppt'>\n";
+      echo "<input type='hidden' name='m_id' value='".$row['m_id']."'>\n";
+      echo "<input type='hidden' name='date' value='$date'>\n";
+      echo "<input type='hidden' name='page' value='edit'>\n";
+      echo "<input class='edit-button' type='submit' value='Print'>\n";
+      echo "</form></td>\n";
+  
     echo("</tr>\n");
   }
   echo "</table>";
