@@ -1,0 +1,244 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @khadyah
+ Watch 2
+  Star 0
+ Fork 0 Proj2Team/Project2-Code
+ Code  Issues 7  Pull requests 1  Projects 0  Wiki  Pulse  Graphs
+Branch: master Find file Copy pathProject2-Code/styles.css
+079392c  2 hours ago
+@linstephen13 linstephen13 login styling, minor bug fixes with going back to proper page, added …
+1 contributor
+RawBlameHistory     
+225 lines (184 sloc)  4.24 KB
+/* stylings for entire site */
+
+body {
+	font-family: helvetica, sans-serif;
+	text-align: center;
+	margin-top: 2.5em;
+}
+
+
+/*
+To add styling to a single HTML element (like an <input>), add the button class
+To add styling to all input child input elements (that are type submit), add button-parent class to parent container
+*/
+
+.button,
+.button-parent input[type="submit"] {
+    border: none;
+    background-color: #F5CA5C;
+    transition: background-color 0.2s;
+    color: #000;
+    height: 35px;
+    font-size: 1.1em;
+    font-weight: 300;
+    margin-top: 15px;
+    border-radius: 2px;
+    padding: 0 20px;
+}
+
+.button:hover,
+.button-parent input[type="submit"]:hover {
+	background-color: #ef9300;
+}
+
+/* edit-button is a special button used specifically with tables, so it fills an entire cell, and doesn't look weird */
+/* Be sure to use form-fill along with it! */
+.edit-button {
+	border: none;
+	background-color: transparent;
+    transition: background-color 0.2s;
+    color: #000;
+    height: 100%;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+.edit-button:hover {
+	background-color: #B6BABD;
+}
+
+/* use form-fill to accompany the edit-button */
+.form-fill {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* For fancy title, add title class to element */
+
+.big-title {
+	font-weight: 300;
+	font-size: 3em;
+	margin: 15px auto;
+}
+
+.medium-title {
+	font-weight: 300;
+	font-size: 1.6em;
+	margin: 15px auto;
+}
+
+.small-title {
+	font-weight: 300;
+	font-size: 1.1em;
+	margin: 15px auto;
+}
+
+/* General code to make an input field bigger */
+
+.large-input {
+	font-size: 1.2em;
+	padding: 3px 10px;
+}
+
+/* For fancy table, add table class to a table element
+   This implementation utilizes table, th, td, and tr elements */
+
+.table {
+	width: 100%;
+	min-width: 1000px;
+}
+.table, .table th, .table td {
+	border: none;
+	border-collapse: collapse;
+	font-family: helvetica;
+}
+
+.table th {
+	border-bottom: 1px solid gray;
+}
+
+.table th, .table td {
+	padding: 10px;
+	text-align: left;
+}
+
+.table td {
+	position: relative;
+	min-width: 50px;
+}
+
+.table tr:nth-child(even) {
+	background-color:#eee;
+}
+
+.table tr:nth-child(odd) {
+	background-color:#fff;
+}
+
+/* To center a form element, add center-form class to form element */
+
+.center-form {
+	width: 40em;
+	max-width: 100%;
+	margin: 30px auto;
+}
+
+/* For fancy input boxes and stuff, add form-clean class to form element */
+/* Suggested: Apply span's with class small-header and have them above inputs */
+
+/* To apply clean look to just a text inputs, add clean-text-input class to input */
+
+.form-clean input {
+	width: 50%;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 10px 5px 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.form-clean-large input,
+.clean-text-input {
+	width: 65%;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 10px;
+    padding: 10px 5px 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.form-clean input:focus,
+.form-clean-large input:focus,
+.clean-text-input:focus {
+	border-bottom: 2px solid #5A68FF;
+}
+
+/* To disable the effects on any inputs you don't want to have them used on */
+.form-clean input.form-clean-disable {
+	width: initial;
+    border: initial;
+    border-bottom: initial;
+    margin-bottom: initial;
+    padding: initial;
+    font-size: initial;
+    outline: initial;
+}
+
+.form-clean input.form-clean-disable:focus {
+	border-bottom: 2px solid #5A68FF;
+}
+
+.small-header {
+	font-size: 0.8em;
+	font-weight: 300;
+}
+
+.medium-header {
+	font-size: 1.1em;
+	font-weight: 300;
+}
+
+.medium-select {
+	width: 35em;
+	height: 12em;
+	font-size: 1em;
+	padding: 5px;
+}
+
+/* wrap-align-left, used to center a block within a form-cleam (or anywhere really), and align the inside stuff left */
+/* To use, add to a div class wrap-align-left that contains elements you wish to align left but not all the way left in the parent container*/
+
+.wrap-align-left {
+	width: 50%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.wrap-align-left input {
+	width: 100%;
+}
+
+.wrap-align-left-small {
+	width: 8em;
+	margin: 0 auto;
+	text-align: left;
+}
+
+/* Adds margin-bottom to all children input, including children of children etc. */
+
+.space-children-input input {
+	margin-bottom: 20px;
+	margin-top: 6px;
+}
+
+/* text aligns center all children inputs */
+
+.text-center-input input {
+	text-align: center;
+}
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
