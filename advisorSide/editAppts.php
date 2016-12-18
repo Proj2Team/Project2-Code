@@ -59,10 +59,15 @@ function getApptTimes($id, $date) {
       echo "<input type='hidden' name='page' value='edit'>\n";
       echo "<input class='edit-button' type='submit' value='Print'>\n";
       echo "</form></td>\n";
-  
     echo("</tr>\n");
   }
   echo "</table>";
+  if (isset($_POST['weekView'])) {
+  echo "<form action='createNewAppt.php' method='post' name='formCreateAppt'>\n";
+    echo "<input type='hidden' name='date' value='" . $date . "'>\n";
+    echo "<input class='button' type='submit' value='Create Appointment for " . date("D M j, Y", strtotime($date)) . "'>\n";
+  echo "</form>\n";
+  }
   return $row;
 }
 
@@ -73,22 +78,25 @@ function getApptTimes($id, $date) {
     <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
-    <form action="createNewAppt.php" method="post" name="formCreateAppt">
-      <input type="hidden" name="date" value="<?php echo $date; ?>">
-      <input class="button" type="submit" value="Create New Appointment">
-    </form>
     <?php if (isset($_POST['weekView'])) { // weekly view
       $datecopy = $date; // To not affect original date variable
+      $dateTitle = $date; // Same idea, don't change original date
+      $dateTitle = date('Y-m-d', strtotime($dateTitle. ' + 6 days'));
+      echo "<h3 class='medium-title'>Viewing My Appointments from<br/>" . date('M j, Y', strtotime($date)) . " - " . date('M j, Y', strtotime($dateTitle)) . "</h3>\n";
       for ($i = 0; $i < 7; $i++) {
         echo "<h3 class='medium-title'> " . date("l F j, Y", strtotime($datecopy)) . "</h3>\n";
         getApptTimes($id, $datecopy);
         $datecopy = date('Y-m-d', strtotime($datecopy. ' + 1 day'));
         echo "<br/><br/>\n";
       }
-    } else {
+    } else { // regular view
       echo "<h3 class='medium-title'>Viewing My Appointments for " . date("l F j, Y", strtotime($date)) . "</h3>\n";
-      getApptTimes($id, $date);
-    } ?>
+      getApptTimes($id, $date); ?>
+      <form action="createNewAppt.php" method="post" name="formCreateAppt">
+        <input type="hidden" name="date" value="<?php echo $date; ?>">
+        <input class="button" type="submit" value="Create New Appointment">
+      </form>
+    <?php } ?>
     <form action='editAppts.php' method='post' name='formEdit'>
         <h3 class="medium-title"> Select another date to view: </h3>
         <input class="large-input" style="margin-bottom: 0.8em;" id='selectedDate' type='date' name='selectedDate' value='<?php echo $date; ?>' placeholder="YYYY-MM-DD"/><br/>

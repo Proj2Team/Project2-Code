@@ -24,7 +24,12 @@ date_default_timezone_set('EST');
 	    <span class="medium-header">Session Type: </span><br/>
 	    <div class="wrap-align-left-small">
 		    <input class="form-clean-disable" type="radio" name="session_type" value="Group" checked required> Group <br/>
-		    <input class="form-clean-disable" type="radio" name="session_type" value="Individul"> Individual <br/>
+		    <input class="form-clean-disable" type="radio" name="session_type" value="Individual"> Individual <br/>
+	    </div><br/>
+	    <span class="medium-header">Open for students to sign up: </span><br/>
+	    <div class="wrap-align-left-small">
+		    <input class="form-clean-disable" type="radio" name="can_signup" value="true" checked required> Yes <br/>
+		    <input class="form-clean-disable" type="radio" name="can_signup" value="false"> No <br/>
 	    </div>
 	    <span class="medium-header">Session Leader: </span><br/>
 	    <select name="session_leader">

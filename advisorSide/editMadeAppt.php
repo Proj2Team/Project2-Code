@@ -18,6 +18,7 @@ $participants = $row['participants'];
 $location = $row['location'];
 $session_type = $row['session_type'];
 $session_leader = $row['session_leader'];
+$can_signup = $row['available_for_signup'];
 
 // Generate table of students for given appointment ID, and give option to kick students off
 function getStudents($m_id) {
@@ -77,8 +78,13 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       <span class="medium-header">Session Type: </span><br/>
       <div class="wrap-align-left-small">
         <input class="form-clean-disable" type="radio" name="session_type" value="Group"<?php if ($session_type == 0) { echo " checked"; } ?> required><span class="medium-header">Group</span><br/>
-        <input class="form-clean-disable" type="radio" name="session_type" value="Individul"<?php if ($session_type == 1) { echo " checked"; } ?>><span class="medium-header">Individual</span><br/>
+        <input class="form-clean-disable" type="radio" name="session_type" value="Individual"<?php if ($session_type == 1) { echo " checked"; } ?>><span class="medium-header">Individual</span><br/>
       </div><br/>
+      <span class="medium-header">Open for students to sign up: </span><br/>
+      <div class="wrap-align-left-small">
+        <input class="form-clean-disable" type="radio" name="can_signup" value="true"<?php if ($can_signup == 1) { echo " checked"; } ?> required> Yes <br/>
+        <input class="form-clean-disable" type="radio" name="can_signup" value="false"<?php if ($can_signup == 0) { echo " checked"; } ?>> No <br/>
+      </div>
       <span class="medium-header">Session Leader: </span><br/>
       <select name="session_leader">
         <?php
@@ -112,6 +118,11 @@ $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
       <form action='processStudentFilter.php' method='post' name='formEdit'>
         <input type='hidden' name='searchType' value='Any Advisor'>
         <input class="button" type='submit' value='Back to All Appointments'>
+      </form>
+    <?php } elseif (isset($_POST['from_view']) && $_POST['from_view'] == "searchView") { ?>
+      <form action='searchAppts.php' method='post' name='formEdit'>
+        <input type='hidden' name='searchType' value='Any Advisor'>
+        <input class="button" type='submit' value='Back to Search'>
       </form>
     <?php } else {
     // If coming from editAppts.php

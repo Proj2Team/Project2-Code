@@ -15,9 +15,23 @@ $num_students = $_POST['num_students'];
 $participants = $_POST['participants'];
 $location = $_POST['location'];
 $session_type = $_POST['session_type'];
+$can_signup = $_POST['can_signup'];
+
+if ($session_type == "Group") {
+  $session_type = 0;
+} else {
+  $session_type = 1;
+}
+
+if ($can_signup == "true") {
+    $can_signup = 1;
+} else {
+    $can_signup = 0;
+}
+
 $session_leader = $_POST['session_leader'];
 
-$sql = "UPDATE `advisor_appts` SET `date` = '$date', `start_time` = '$start_time', `end_time` = '$end_time', `num_students` = '$num_students', `participants` = '$participants', `location` = '$location', `session_type` = '$session_type', `session_leader` = '$session_leader' WHERE `m_id` = '$m_id'";
+$sql = "UPDATE `advisor_appts` SET `date` = '$date', `start_time` = '$start_time', `end_time` = '$end_time', `num_students` = '$num_students', `participants` = '$participants', `location` = '$location', `session_type` = '$session_type', `session_leader` = '$session_leader', `available_for_signup` = '$can_signup' WHERE `m_id` = '$m_id'";
 $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
 // Now choose where to go
@@ -30,6 +44,8 @@ if ($from_view == "myView") { // Viewing all my appointments
 	$headerLocation = 'Location: manageStudents.php';
 } elseif ($from_view == "editAppts") {
 	$headerLocation = 'Location: editAppts.php?selectedDate=' . $date;
+} elseif ($from_view == "searchView") {
+	$headerLocation = 'Location: searchAppts.php';
 }
 
 header($headerLocation);

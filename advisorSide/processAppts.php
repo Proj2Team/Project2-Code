@@ -13,11 +13,18 @@ $end_time = date("H:i", strtotime($_POST['end_time']));
 $numStudents = $_POST['numStudents'];
 $location = $_POST['location'];
 $session_type = $_POST['session_type'];
+$can_signup = $_POST['can_signup'];
 
 if ($session_type == "Group") {
   $session_type = 0;
 } else {
   $session_type = 1;
+}
+
+if ($can_signup == "true") {
+    $can_signup = 1;
+} else {
+    $can_signup = 0;
 }
 
 $session_leader = $_POST['session_leader'];
@@ -32,7 +39,7 @@ if ( isset($session_type) && isset($start_time) && isset($end_time) ) {
     $id = $row['0'];
 
     // TODO: if advisor selects individual appt, and selectes over 1 students, check validation somehow
-    $query = "INSERT INTO `advisor_appts`(`m_id`, `a_id`, `date`, `start_time`, `end_time`, `num_students`, `participants`, `location`, `session_type`, `session_leader`) VALUES ('', '$id', '$date', '$start_time', '$end_time', '$numStudents', '0', '$location', '$session_type', '$session_leader')";
+    $query = "INSERT INTO `advisor_appts`(`m_id`, `a_id`, `date`, `start_time`, `end_time`, `num_students`, `participants`, `location`, `session_type`, `session_leader`, `available_for_signup`) VALUES ('', '$id', '$date', '$start_time', '$end_time', '$numStudents', '0', '$location', '$session_type', '$session_leader', '$can_signup')";
 
     echo $query;
 }

@@ -9,7 +9,7 @@ $user = $_SESSION['username'];
 $office = $_SESSION['office'];
 $email = $_SESSION['email'];
 
-$searchType = $_POST['next'];
+$searchType = $_POST['searchType'];
 
 date_default_timezone_set('EST');
 
@@ -68,6 +68,7 @@ function getApptTimes() {
       } else { // Trying to view ALL appointments ever made
         echo "allView'>\n";
       }
+      echo "<input type='hidden' name='from_view' value='searchView'>\n";
       echo "<input class='edit-button' type='submit' value='Edit'>\n";
       echo "</form></td>\n";
     echo("</tr>\n");

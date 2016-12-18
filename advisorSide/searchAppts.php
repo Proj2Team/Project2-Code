@@ -14,11 +14,11 @@ session_start();
 	<body>
 		<h3 class="medium-title">How would you like to filter your appointment search?</h3>
 	    <form class="button-parent" action='processSearch.php' method='post' name='searchGroup'>
-			<input type='submit' name='next' value='My Upcoming Open'><br/>
-			<input type='submit' name='next' value='All Upcoming Open'><br/>
-			<input type='submit' name='next' value='My Upcoming Closed'><br/>
-			<input type='submit' name='next' value='All Upcoming Closed'><br/>
-			<input type='submit' name='next' value='All Appointments (All Time)'><br/>
+			<input type='submit' name='searchType' value='My Upcoming Open'><br/>
+			<input type='submit' name='searchType' value='All Upcoming Open'><br/>
+			<input type='submit' name='searchType' value='My Upcoming Closed'><br/>
+			<input type='submit' name='searchType' value='All Upcoming Closed'><br/>
+			<input type='submit' name='searchType' value='All Appointments (All Time)'><br/>
 	    </form>
 	    <form action="advisorHome.php" method="post" name="backHome">
 			<input class="button" type='submit' value='Back to Dashboard'>
