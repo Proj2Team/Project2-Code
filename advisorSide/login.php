@@ -8,14 +8,13 @@ session_start();
     <link rel="stylesheet" href="../styles.css" type="text/css">
   </head>
   <body>
+    <h1 class="medium-title">UMBC Advisor Login</h1>
 
-  <?php
-  if ($_SESSION['userValue'] == true) {
-     echo "Invalid username/password combination.";
-  }
-
-  $_SESSION['advisorExists'] = false;
-  $_SESSION['confirmedPass'] = false; ?>
+    <?php if ($_SESSION['userValue'] == true) {
+       echo "Invalid username/password combination.";
+    }
+    $_SESSION['advisorExists'] = false;
+    $_SESSION['confirmedPass'] = false; ?>
 
     <form class="center-form form-clean space-children-input text-center-input" action='processLogin.php' method='post' name='AdvisorLogin'>
       <div class='field'>
