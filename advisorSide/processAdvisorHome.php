@@ -26,7 +26,7 @@ switch ($selectedOption)
     header('Location: advisorInfo.php');
     break;
   case "Shut Down Database":
-    header('Location: shutDown.php');
+    header('Location: confirmShutdown.php');
     break;
   case "Activate Database":
     header('Location: activate.php');
