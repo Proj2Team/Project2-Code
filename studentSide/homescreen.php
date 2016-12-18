@@ -40,7 +40,7 @@ else {
    header('Location: newLogin.php');
 }
  echo('!');
-echo('</h1>\n');
+echo("</h1>\n");
 
  echo('<p>');
 $s_id = $_SESSION['studentID'];

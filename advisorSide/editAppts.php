@@ -86,6 +86,7 @@ function getApptTimes($id, $date) {
       $dateTitle = $date; // Same idea, don't change original date
       $dateTitle = date('Y-m-d', strtotime($dateTitle. ' + 6 days'));
       echo "<h3 class='medium-title'>Viewing My Appointments from<br/>" . date('M j, Y', strtotime($date)) . " - " . date('M j, Y', strtotime($dateTitle)) . "</h3>\n";
+      echo "<br/>";
       for ($i = 0; $i < 7; $i++) {
         echo "<h3 class='medium-title'> " . date("l F j, Y", strtotime($datecopy)) . "</h3>\n";
         getApptTimes($id, $datecopy);

@@ -28,7 +28,7 @@ session_start();
         <input type='password' size='25' maxlength='50' name='confirmPass' required><br/>
         <span class="small-header">Office Location:</span><br/>
         <input type='text' size='25' maxlength='10' name='office' value="<?php echo $_SESSION['office']; ?>" required><br/>
-        <span class="small-header">Email:</span><br/>
+        <span class="small-header">UMBC Email:</span><br/>
         <input type='email' size='25' maxlength='50' name='email' value="<?php echo $_SESSION['email']; ?>" required><br/><br/>
       </div>
       <span class="medium-header">Select Majors to Advise: (Hold control and click to select multiple)</span><br/><br/>
