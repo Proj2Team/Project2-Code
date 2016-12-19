@@ -43,7 +43,7 @@ else{
 
 	$status = mail($email,$subject,$body);
 
-echo('<a href=\'https://swe.umbc.edu/~kwali2/CMSC331/phpCode/Project%202/studentSide/studentReset.php\'> Link </a>');
+echo('<a href=\'studentReset.php\'> Link </a>');
 echo('<br>');	
 
 	echo('A message has been sent to your email. Please check your inbox and reset your password.');
