@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Student: Reset Password</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 </head>
 <body>
 <center>

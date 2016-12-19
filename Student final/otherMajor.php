@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Student: Log in</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 </head>
 <body>
 You have indicated that you plan to pursue a major <b>other</b> than one of the following, beginning next semester:

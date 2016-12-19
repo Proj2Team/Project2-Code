@@ -8,7 +8,7 @@ $COMMON = new Common($debug);
 <html>
 <head>
 <title>Student: Log in</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 </head>
 <body>
 
@@ -41,23 +41,17 @@ else{
 <!-- EDITS BY KHADIJAH: neatened up format and changed from email to umbc ID because -->
 <!-- the query in processLogin.php was asking for umbc ID in the first place...-->
 <center>
-<form class="center-form form-clean space-children-input text-center-input" action='processLogin.php' method='post' name='studentLogin'>
+<form style="margin-bottom: 0;" class="center-form form-clean text-center-input" action='processLogin.php' method='post' name='studentLogin'>
 
     <label for='umbc_ID'>UMBC ID:</label><br>
-    <input type='text' name='umbc_ID' required placeholder='XZ12345' required><p>
-
-
+    <input type='text' name='umbc_ID' required placeholder='XZ12345' required><br/>
 
     <label for='password'>Password:</label><br>
-    <input type='password' name='password' required><p>
-  
-
-
+    <input type='password' name='password' required><br/>
     <input type='submit' class='button' value='Login'>
- 
 </form>
 
-<form class="center-form form-clean space-children-input text-center-input" action='registerStudent.php' method='post' name='registerStudent'>
+<form style="margin-top: 0;" class="center-form form-clean space-children-input text-center-input" action='registerStudent.php' method='post' name='registerStudent'>
   <input type='submit' value='Register' class='button'>
 </form>
 </center>

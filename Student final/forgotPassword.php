@@ -12,7 +12,7 @@ session_start();
 <html>
 <head>
 <title>Restart Password</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 </head>
 <body>
 <center>

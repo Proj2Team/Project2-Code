@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @khadyah
- Watch 2
-  Star 0
- Fork 0 Proj2Team/Project2-Code
- Code  Issues 7  Pull requests 1  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathProject2-Code/styles.css
-079392c  2 hours ago
-@linstephen13 linstephen13 login styling, minor bug fixes with going back to proper page, added …
-1 contributor
-RawBlameHistory     
-225 lines (184 sloc)  4.24 KB
 /* stylings for entire site */
 
 body {
@@ -202,6 +185,11 @@ To add styling to all input child input elements (that are type submit), add but
 	font-weight: 300;
 }
 
+.big-header {
+	font-size: 1.4em;
+	font-weight: 300;
+}
+
 .medium-select {
 	width: 35em;
 	height: 12em;
@@ -228,6 +216,12 @@ To add styling to all input child input elements (that are type submit), add but
 	text-align: left;
 }
 
+.wrap-align-left-medium {
+	width: 14em;
+	margin: 0 auto;
+	text-align: left;
+}
+
 /* Adds margin-bottom to all children input, including children of children etc. */
 
 .space-children-input input {
@@ -240,5 +234,3 @@ To add styling to all input child input elements (that are type submit), add but
 .text-center-input input {
 	text-align: center;
 }
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help

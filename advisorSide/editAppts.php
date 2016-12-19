@@ -28,8 +28,6 @@ function getApptTimes($id, $date) {
   $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$id' AND `date` = '$date' ORDER BY `start_time` ASC";
   $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 
-  // get student id that signed up for this advisor on this date -- save in array for multiples
-
   echo("<table class='table' border='1px'>");
   echo("<tr><th>Session Leader</th><th>Start Time</th><th>End Time</th><th>Session Type</th><th>Maximum Capacity</th><th>Number of Participants</th><th>Location</th><th>Open for Signup</th><th></th><th></th><th></th></tr>");
   while ( $row = mysql_fetch_assoc($rs) ) {

@@ -18,7 +18,7 @@ if(!isset($_SESSION['studentID']))
 <html>
 <head>
 <title>Student: Edit Information</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 </head>
 <body>
 <center>

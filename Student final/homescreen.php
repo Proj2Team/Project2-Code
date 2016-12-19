@@ -8,12 +8,20 @@ $COMMON = new Common($debug);
 <html>
 <head>
 <title>Student Homepage</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
+<style type="text/css">
+	input,
+	button {
+		width: 18em;
+	}
+
+</style>
+</head>
+<body>
 <!-- EDITS BY KHADIJAH: edit so it prints out the student's name as a header. It will print out-->
 <!-- preferred name if they have one, but if not it prints out their first name -->
-
-<h1>
-Welcome 
+<h1 class="big-title">
+Welcome, 
 <?php
 
 if($_SESSION['pref'] != '')
@@ -45,14 +53,13 @@ if(!$row)
 }
 
 //display message according to whether or not they have signed up for a meeting
-if($row['appt_id'] == '') 
+if ($row['appt_id'] == '')
 {
    echo("You have not yet signed up for a meeting");
 }
-else{
-
-
- echo('Your appointment:');
+else
+{
+ echo('<h3 class="big-header">Your Appointment:<br/>');
  echo('<br>');
 
 $sql = "SELECT * FROM advisor_appts WHERE `m_id` = $row[appt_id]";
@@ -60,7 +67,7 @@ $sql = "SELECT * FROM advisor_appts WHERE `m_id` = $row[appt_id]";
 $rs = $COMMON-> executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
 $row = mysql_fetch_assoc($rs);
 
-	echo('Day and Time: ' . $row['date'] .' ' . $row['start_time'] . '-' . $row['end_time'] . '<br>');
+	echo('Day and Time: ' . date("l F j, Y", strtotime($row['date'])) . '<br/>' . date("g:i a", strtotime($row['start_time'])) . ' - ' . date("g:i a", strtotime($row['end_time'])) . '<br>');
 	echo('Advisor: ' . $row['session_leader'] . '<br>');
 
 	echo('Meeting Type: ');
@@ -68,23 +75,21 @@ $row = mysql_fetch_assoc($rs);
 		echo( 'Group' . '<br>');
 	elseif($row['session_type'] == 1)
 		echo('Individual' . '<br>');
-
+	echo "Location: ";
+	if ($row['location'] == '') {
+		echo "TBA";
+	} else {
+		echo $row['location'];
+	}
+	echo "</h3>\n";
 
 echo('<form action=\'cancelMeeting.php\' method=\'post\' name=\'studentHome\'>');
 echo('<input type=\'submit\' class = \'button\' name=\'cancel\' value=\'Cancel Meeting\'><p>');
 echo('</form>');
-
 }
 
 
 ?>
-
-
-
-
-
-</head>
-<body>
 
 
 <form action='searchAppointments.php' method='post' name='studentHome'>

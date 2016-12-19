@@ -9,7 +9,7 @@ $COMMON = new Common($debug);
 
 <!--added title and linked to css-->
 <title>Search Appointments</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 
 </head>
 <body>
@@ -46,30 +46,31 @@ if($row['appt_id'] != '')
 
 <!--EDIT BY KHADIJAH: Added default value for date to be today and a minimum so that a student-->
 <!--cannot look at an appointment in the past.-->
-Earliest Date:<br>
-<input type='date' name='date' value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>" placeholder='YYYY-MM-DD' />
-<p>
+<h3 class="medium-title">Earliest Date:</h3>
+<input class="large-input" type='date' name='date' value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>" placeholder='YYYY-MM-DD' />
+<br/>
 
 <!--EDIT BY KHADIJAH: Instead of the checkboxes I put in a time for from and to. not sure how-->
 <!--easy it'll be to implement (I'll be working on it) but it sure as heck looks neater than-->
 <!--the huge list of checkboxes. It'll also won't allow times to be entered outside of specified time-->
-Appointment Time:
+<h3 class="medium-title">Appointment Time:</h3>
 <br>
-From: <input type = 'time' name = 'fromTime' min = "08:00" max = "18:00" step = "1800" value="08:00" placeholder='HH:MM' required> 
+From: <input class="large-input" type = 'time' name = 'fromTime' min = "08:00" max = "18:00" step = "1800" value="08:00" placeholder='HH:MM' required>
 
-To: <input type = 'time' name = 'toTime' min = "08:30" max = "18:30" step = "1800" value="18:30" placeholder='HH:MM' required><p>
+To: <input class="large-input" type = 'time' name = 'toTime' min = "08:30" max = "18:30" step = "1800" value="18:30" placeholder='HH:MM' required><br/><br/>
 
 
-Choose Meeting Type:
-<br>
+<h3 class="medium-title">Choose Meeting Type:</h3>
+
 <!-- Change to radio buttons - Syake-->
 <!--default checked-->
-<input type='radio' name = 'appointment' value='all_appts' checked>All Appointments<br>
-<input type='radio' name = 'appointment' value='indv_appts'>Individual Appointments<br>
-<input type='radio' name = 'appointment' value='grp_appts'>Group Appointments<br>
+<div class="wrap-align-left-medium">
+	<input type='radio' name = 'appointment' value='all_appts' checked> All Appointments<br>
+	<input type='radio' name = 'appointment' value='indv_appts'> Individual Appointments<br>
+	<input type='radio' name = 'appointment' value='grp_appts'> Group Appointments<br>
+</div><br/>
 
 
-<br><br>
 <input type='submit' class = 'button' value='Go'>
 </form>
 

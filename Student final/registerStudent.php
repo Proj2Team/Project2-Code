@@ -4,7 +4,7 @@ session_start();
 <html>
 <head>
 <title>Student: Create an Account</title>
-<link rel="stylesheet" href="../studentstyles.css" type="text/css">
+<link rel="stylesheet" href="studentstyles.css" type="text/css">
 </head>
 <body>
 <center>
