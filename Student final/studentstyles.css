@@ -5,7 +5,10 @@ body {
 	text-align: center;
 	margin-top: 2.5em;
 	color: white;
-	background-image: "http://creativeservices.umbc.edu/images/portfolio/full/logo-retriever1.jpg";
+	background-image: url("http://creativeservices.umbc.edu/images/portfolio/full/logo-retriever1.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 
