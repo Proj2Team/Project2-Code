@@ -4,6 +4,8 @@ body {
 	font-family: helvetica, sans-serif;
 	text-align: center;
 	margin-top: 2.5em;
+	color: white;
+	background-image: "http://creativeservices.umbc.edu/images/portfolio/full/logo-retriever1.jpg";
 }
 
 
@@ -91,6 +93,7 @@ To add styling to all input child input elements (that are type submit), add but
 .table {
 	width: 100%;
 	min-width: 1000px;
+	color: #000;
 }
 .table, .table th, .table td {
 	border: none;
