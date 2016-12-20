@@ -4,8 +4,17 @@ body {
 	font-family: helvetica, sans-serif;
 	text-align: center;
 	margin-top: 2.5em;
+	color: white;
+	background-image: url("../logo-retriever2.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
+a {
+	text-decoration: none;
+	color: green;
+}
 
 /*
 To add styling to a single HTML element (like an <input>), add the button class
@@ -91,6 +100,7 @@ To add styling to all input child input elements (that are type submit), add but
 .table {
 	width: 100%;
 	min-width: 1000px;
+	color: #000;
 }
 .table, .table th, .table td {
 	border: none;
