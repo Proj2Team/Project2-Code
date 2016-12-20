@@ -28,13 +28,13 @@ function getApptTimes() {
     $sql = "SELECT * FROM `advisor_appts` WHERE `date` >= CURDATE() AND `participants` < `num_students` ORDER BY `date` ASC, `start_time` ASC";
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
   }
-  elseif ($searchType == "My Upcoming Closed")
+  elseif ($searchType == "My Upcoming Full")
   {
     $a_id = $_SESSION['advisorID'];
     $sql = "SELECT * FROM `advisor_appts` WHERE `a_id` = '$a_id' AND `date` >= CURDATE() AND `participants` >= `num_students` ORDER BY `date` ASC, `start_time` ASC";
     $rs = $COMMON->executeQuery($sql, $_SERVER["SCRIPT_NAME"]);
   }
-  elseif ($searchType == "All Upcoming Closed")
+  elseif ($searchType == "All Upcoming Full")
   {
     $a_id = $_SESSION['advisorID'];
     $sql = "SELECT * FROM `advisor_appts` WHERE `date` >= CURDATE() AND `participants` >= `num_students` ORDER BY `date` ASC, `start_time` ASC";

@@ -73,12 +73,12 @@ function getAllApptTimes() {
 
     <?php if ( isset($_GET['myAppts']) || isset($_POST['myView'])): ?>
        <form action="printSession_S.php" method="post" name="print">
-        <input class="button" type='submit' value='Print All Appointments'>
+        <input class="button" type='submit' value='Print Signed Up Students Info'>
 	<input type='hidden' name='a_id' value='<?php echo $_SESSION['advisorID']; ?>'>
        </form>
      <?php else :?>
        <form action="printAll.php" method="post" name="print">
-        <input class="button" type='submit' value='Print All Appointments'>
+        <input class="button" type='submit' value='Print All Student Information'>
        </form>
      <?php endif ?>
 

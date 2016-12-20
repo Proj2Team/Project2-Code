@@ -16,8 +16,8 @@ session_start();
 	    <form class="button-parent" action='processSearch.php' method='post' name='searchGroup'>
 			<input type='submit' name='searchType' value='My Upcoming Open'><br/>
 			<input type='submit' name='searchType' value='All Upcoming Open'><br/>
-			<input type='submit' name='searchType' value='My Upcoming Closed'><br/>
-			<input type='submit' name='searchType' value='All Upcoming Closed'><br/>
+			<input type='submit' name='searchType' value='My Upcoming Full'><br/>
+			<input type='submit' name='searchType' value='All Upcoming Full'><br/>
 			<input type='submit' name='searchType' value='All Appointments (All Time)'><br/>
 	    </form>
 	    <form action="advisorHome.php" method="post" name="backHome">
