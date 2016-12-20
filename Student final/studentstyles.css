@@ -11,6 +11,10 @@ body {
 	background-size: cover;
 }
 
+a {
+	text-decoration: none;
+	color: green;
+}
 
 /*
 To add styling to a single HTML element (like an <input>), add the button class
